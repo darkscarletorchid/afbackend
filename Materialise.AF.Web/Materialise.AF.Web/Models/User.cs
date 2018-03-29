@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 
 namespace Materialise.AF.Web.Models
 {
@@ -11,7 +10,5 @@ namespace Materialise.AF.Web.Models
 		public string Email { get; set; }
 		public string Token { get; set; }
 		public DateTime RegistrationDate { get; set; }
-
-		public virtual Collection<Marker> Markers { get; set; }
 	}
 }
