@@ -6,6 +6,7 @@ using Materialise.AF.Web.Middleware;
 using Materialise.AF.Web.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
@@ -38,6 +39,9 @@ namespace Materialise.AF.Web
 			services.AddCors();
 
 			services.Configure<TokenSettings>(Configuration.GetSection("TokenSettings"));
+
+			const string connection = "Data Source=.;Database=AF;Integrated Security=true";
+			services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetSection("ConnectionStrings")["DefaultConnection"]));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
