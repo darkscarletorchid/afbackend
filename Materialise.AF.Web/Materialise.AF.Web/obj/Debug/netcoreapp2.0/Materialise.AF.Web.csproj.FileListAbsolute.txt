@@ -8,3 +8,4 @@ D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\obj\Debug\netcoreapp2.0\
 D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\obj\Debug\netcoreapp2.0\Materialise.AF.Web.AssemblyInfo.cs
 D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\obj\Debug\netcoreapp2.0\Materialise.AF.Web.dll
 D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\obj\Debug\netcoreapp2.0\Materialise.AF.Web.pdb
+D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\obj\Debug\netcoreapp2.0\Materialise.AF.Web.csprojResolveAssemblyReference.cache

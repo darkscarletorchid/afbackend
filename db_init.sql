@@ -1,7 +1,8 @@
 CREATE TABLE [dbo].[Users](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](250) NOT NULL,
-	[Email] [nvarchar](250) NULL,
+	[FirstName] [nvarchar](250) NOT NULL,
+	[LastName] [nvarchar](250) NOT NULL,
+	[Email] [nvarchar](250) NOT NULL,
 	[Token] [nvarchar](1024) NOT NULL,
 	[RegistrationDate] [datetime] NOT NULL,
  CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
@@ -62,9 +63,10 @@ GO
 ALTER TABLE [dbo].[UserMarkers] CHECK CONSTRAINT [FK_UserMarkers_Markers]
 GO
 
-ALTER TABLE [dbo].[Users] ADD  CONSTRAINT [Name_Email] UNIQUE NONCLUSTERED 
+ALTER TABLE [dbo].[Users] ADD  CONSTRAINT [FirstName_LastName_Email] UNIQUE NONCLUSTERED 
 (
-	[Name] ASC,
+	[FirstName] ASC,
+	[LastName] ASC,
 	[Email] ASC
 )
 GO

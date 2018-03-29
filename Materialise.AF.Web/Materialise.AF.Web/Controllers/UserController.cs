@@ -36,18 +36,20 @@ namespace Materialise.AF.Web.Controllers
 		[HttpPost]
 		public IActionResult Index([FromBody] UserRequest userRequest)
 		{
-			if (string.IsNullOrWhiteSpace(userRequest.UserName))
-				throw new NullReferenceException("userName is required");
+			CheckRequired("Email", userRequest.Email);
+			CheckRequired("First Name", userRequest.FirstName);
+			CheckRequired("Last Name", userRequest.LastName);
 
-			var checkUser = _dataContext.Users.FirstOrDefault(q => q.Name == userRequest.UserName);
+			var checkUser = _dataContext.Users.FirstOrDefault(q => q.Email.Equals(userRequest.Email, StringComparison.InvariantCultureIgnoreCase));
 			if (checkUser != null)
-				throw new Exception($"'{userRequest.UserName}' already exists");
+				throw new Exception($"'{userRequest.Email}' already exists");
 
-			var token = GenerateToken(userRequest.UserName);
+			var token = GenerateToken(userRequest.Email);
 
 			var user = new User
 			{
-				Name = userRequest.UserName,
+				FirstName = userRequest.FirstName,
+				LastName = userRequest.LastName,
 				Email = userRequest.Email,
 				RegistrationDate = DateTime.UtcNow,
 				Token = token
@@ -73,6 +75,12 @@ namespace Materialise.AF.Web.Controllers
 			var token = new JwtSecurityToken(_tokenSettings.Issuer, _tokenSettings.Audience, claims, expires: DateTime.Now.AddDays(1), signingCredentials: creds);
 
 			return new JwtSecurityTokenHandler().WriteToken(token);
+		}
+
+		private void CheckRequired(string field, string fieldValue)
+		{
+			if (string.IsNullOrWhiteSpace(fieldValue))
+				throw new Exception($"{field} is required");
 		}
 	}
 }

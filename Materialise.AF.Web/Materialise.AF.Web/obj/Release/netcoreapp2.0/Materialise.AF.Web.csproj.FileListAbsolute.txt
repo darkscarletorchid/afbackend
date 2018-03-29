@@ -1,0 +1,11 @@
+D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\bin\Release\netcoreapp2.0\Materialise.AF.Web.deps.json
+D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\bin\Release\netcoreapp2.0\Materialise.AF.Web.runtimeconfig.json
+D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\bin\Release\netcoreapp2.0\Materialise.AF.Web.runtimeconfig.dev.json
+D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\bin\Release\netcoreapp2.0\Materialise.AF.Web.dll
+D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\bin\Release\netcoreapp2.0\Materialise.AF.Web.pdb
+D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\obj\Release\netcoreapp2.0\Materialise.AF.Web.csprojResolveAssemblyReference.cache
+D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\obj\Release\netcoreapp2.0\Materialise.AF.Web.csproj.CoreCompileInputs.cache
+D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\obj\Release\netcoreapp2.0\Materialise.AF.Web.AssemblyInfoInputs.cache
+D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\obj\Release\netcoreapp2.0\Materialise.AF.Web.AssemblyInfo.cs
+D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\obj\Release\netcoreapp2.0\Materialise.AF.Web.dll
+D:\development\AF\Materialise.AF.Web\Materialise.AF.Web\obj\Release\netcoreapp2.0\Materialise.AF.Web.pdb

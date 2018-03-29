@@ -8,7 +8,5 @@ namespace Materialise.AF.Web.Models
 		public int UserId { get; set; }
 		public int MarkerId { get; set; }
 		public DateTime DateTime { get; set; }
-
-		public virtual User User { get; set; }
 	}
 }

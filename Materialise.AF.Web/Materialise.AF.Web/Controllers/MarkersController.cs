@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace Materialise.AF.Web.Controllers
 {
 	[Route("api/[controller]")]
-	public class MarkersContoller : Controller
+	public class MarkersController : Controller
 	{
 		private readonly DataContext _dataContext;
 
-		public MarkersContoller(DataContext dataContext)
+		public MarkersController(DataContext dataContext)
 		{
 			_dataContext = dataContext;
 		}
