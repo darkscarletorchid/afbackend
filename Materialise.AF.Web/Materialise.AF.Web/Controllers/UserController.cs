@@ -62,7 +62,7 @@ namespace Materialise.AF.Web.Controllers
 				.FirstOrDefault(q => q.Id == id);
 
 			if (user == null)
-				return NotFound($"User with id '${id}' doesn't exist");
+				return NotFound($"User with id '{id}' doesn't exist");
 
 			var markerResponse = new MarkerResponse
 			{
