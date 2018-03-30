@@ -119,7 +119,7 @@ namespace Materialise.AF.Web.Controllers
 			var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenSettings.Key));
 			var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-			var token = new JwtSecurityToken(_tokenSettings.Issuer, _tokenSettings.Audience, claims, expires: DateTime.Now.AddDays(1), signingCredentials: creds);
+			var token = new JwtSecurityToken(_tokenSettings.Issuer, _tokenSettings.Audience, claims, expires: DateTime.MaxValue, signingCredentials: creds);
 
 			return new JwtSecurityTokenHandler().WriteToken(token);
 		}
