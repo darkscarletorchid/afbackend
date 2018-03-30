@@ -5,7 +5,9 @@ using System.Security.Claims;
 using System.Text;
 using Materialise.AF.Web.Models;
 using Materialise.AF.Web.RequestModels;
+using Materialise.AF.Web.ResponseModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -26,11 +28,51 @@ namespace Materialise.AF.Web.Controllers
 		[HttpGet]
 		public IActionResult Index()
 		{
-			var markers = _dataContext.Markers;
-			var users = _dataContext.Users;
-			var userMarkers = _dataContext.UserMarkers;
-			
-			return Ok(markers);
+			var userMarkers = _dataContext.UserMarkers
+				.Include(q => q.User)
+				.Include(q => q.Marker)
+				.ThenInclude(q => q.UserMarkers)
+				.GroupBy(q => q.User)
+				.ToList();
+
+			var markerResponse = userMarkers.Select(q => new MarkerResponse
+			{
+				UserId = q.Key.Id,
+				UserName = $"{q.Key.FirstName} {q.Key.LastName}",
+				Markers = q.Select(m => new MarkerModel
+				{
+					MarkerId = m.Marker.Key,
+					Letter = m.Marker.Value
+				})
+			});
+
+			return Ok(markerResponse);
+		}
+
+		[HttpGet]
+		[Route("{id:int}")]
+		public IActionResult Index(int id)
+		{
+			var user = _dataContext.Users
+				.Include(q => q.UserMarkers)
+				.ThenInclude(q => q.Marker)
+				.FirstOrDefault(q => q.Id == id);
+
+			if (user == null)
+				return NotFound($"User with id '${id}' doesn't exist");
+
+			var markerResponse = new MarkerResponse
+			{
+				UserId = user.Id,
+				UserName = $"{user.FirstName} {user.LastName}",
+				Markers = user.UserMarkers.Select(q => new MarkerModel
+				{
+					MarkerId = q.Marker.Key,
+					Letter = q.Marker.Value
+				})
+			};
+
+			return Ok(markerResponse);
 		}
 
 		[HttpPost]

@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Materialise.AF.Web.Models
 {
@@ -15,9 +14,25 @@ namespace Materialise.AF.Web.Models
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			//modelBuilder.Entity<User>().HasKey(u => u.Id);
-			//modelBuilder.Entity<Marker>().HasKey(m => m.Id);
-			//modelBuilder.Entity<UserMarker>().HasKey(um => um.Id);
+			modelBuilder.Entity<UserMarker>()
+				.HasOne(q => q.User)
+				.WithMany(u => u.UserMarkers)
+				.HasForeignKey(q => q.UserId);
+
+			modelBuilder.Entity<User>()
+				.HasMany(q => q.UserMarkers)
+				.WithOne(u => u.User)
+				.HasPrincipalKey(q => q.Id);
+
+			modelBuilder.Entity<UserMarker>()
+				.HasOne(q => q.Marker)
+				.WithMany(um => um.UserMarkers)
+				.HasForeignKey(q => q.MarkerId);
+
+			modelBuilder.Entity<Marker>()
+				.HasMany(q => q.UserMarkers)
+				.WithOne(m => m.Marker)
+				.HasPrincipalKey(q => q.Id);
 		}
 	}
 }
