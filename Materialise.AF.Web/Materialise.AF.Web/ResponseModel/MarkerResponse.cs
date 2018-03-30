@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Materialise.AF.Web.ResponseModel
 {
@@ -13,5 +14,6 @@ namespace Materialise.AF.Web.ResponseModel
 	{
 		public string MarkerId { get; set; }
 		public string Letter { get; set; }
+		public DateTime Timestamp { get; set; }
 	}
 }

@@ -42,7 +42,8 @@ namespace Materialise.AF.Web.Controllers
 				Markers = q.Select(m => new MarkerModel
 				{
 					MarkerId = m.Marker.Key,
-					Letter = m.Marker.Value
+					Letter = m.Marker.Value,
+					Timestamp = m.DateTime
 				})
 			});
 
@@ -68,7 +69,8 @@ namespace Materialise.AF.Web.Controllers
 				Markers = user.UserMarkers.Select(q => new MarkerModel
 				{
 					MarkerId = q.Marker.Key,
-					Letter = q.Marker.Value
+					Letter = q.Marker.Value,
+					Timestamp = q.DateTime
 				})
 			};
 
@@ -100,7 +102,7 @@ namespace Materialise.AF.Web.Controllers
 			_dataContext.Users.Add(user);
 			_dataContext.SaveChanges();
 
-			return Ok(token);
+			return Ok(new {user.Id, user.Token});
 		}
 
 		private string GenerateToken(string userName)
@@ -119,7 +121,7 @@ namespace Materialise.AF.Web.Controllers
 			return new JwtSecurityTokenHandler().WriteToken(token);
 		}
 
-		private void CheckRequired(string field, string fieldValue)
+		private static void CheckRequired(string field, string fieldValue)
 		{
 			if (string.IsNullOrWhiteSpace(fieldValue))
 				throw new Exception($"{field} is required");
