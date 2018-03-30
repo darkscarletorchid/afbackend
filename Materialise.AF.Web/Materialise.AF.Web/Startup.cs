@@ -40,7 +40,8 @@ namespace Materialise.AF.Web
 			{
 				builder.AllowAnyOrigin()
 					.AllowAnyHeader()
-					.AllowAnyMethod();
+					.AllowAnyMethod()
+					.SetIsOriginAllowedToAllowWildcardSubdomains();
 			}));
 
 			services.Configure<TokenSettings>(Configuration.GetSection("TokenSettings"));
@@ -66,6 +67,8 @@ namespace Materialise.AF.Web
 			app.UseSwaggerUI(setupAction => setupAction.SwaggerEndpoint("v1/swagger.json", "V1 Docs"));
 
 			app.UseStaticFiles();
+
+			app.UseCors(o => o.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
 			app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
