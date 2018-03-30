@@ -10,11 +10,4 @@ namespace Materialise.AF.Web.ResponseModel
 		public TimeSpan Progress { get; set; }
 		public IEnumerable<MarkerModel> Markers { get; set; }
 	}
-
-	public class MarkerModel
-	{
-		public string MarkerId { get; set; }
-		public string Letter { get; set; }
-		public DateTime Timestamp { get; set; }
-	}
 }
