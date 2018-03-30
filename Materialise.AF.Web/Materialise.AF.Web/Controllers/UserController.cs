@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -39,13 +40,14 @@ namespace Materialise.AF.Web.Controllers
 			{
 				UserId = q.Key.Id,
 				UserName = $"{q.Key.FirstName} {q.Key.LastName}",
+				Progress = CalculateProgress(q.Key.RegistrationDate, q.Select(mk => mk.DateTime).ToList()),
 				Markers = q.Select(m => new MarkerModel
 				{
 					MarkerId = m.Marker.Key,
 					Letter = m.Marker.Value,
 					Timestamp = m.DateTime
 				})
-			});
+			}).OrderBy(q => q.Progress);
 
 			return Ok(markerResponse);
 		}
@@ -66,6 +68,7 @@ namespace Materialise.AF.Web.Controllers
 			{
 				UserId = user.Id,
 				UserName = $"{user.FirstName} {user.LastName}",
+				Progress = CalculateProgress(user.RegistrationDate, user.UserMarkers.Select(q => q.DateTime).ToList()),
 				Markers = user.UserMarkers.Select(q => new MarkerModel
 				{
 					MarkerId = q.Marker.Key,
@@ -125,6 +128,16 @@ namespace Materialise.AF.Web.Controllers
 		{
 			if (string.IsNullOrWhiteSpace(fieldValue))
 				throw new Exception($"{field} is required");
+		}
+
+		private static TimeSpan CalculateProgress(DateTime registrationDate, List<DateTime> markerDate)
+		{
+			if (!markerDate.Any())
+				return TimeSpan.Zero;
+
+			var lastDate = markerDate.OrderByDescending(q => q.Ticks).FirstOrDefault();
+
+			return lastDate - registrationDate;
 		}
 	}
 }

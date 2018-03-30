@@ -7,6 +7,7 @@ namespace Materialise.AF.Web.ResponseModel
 	{
 		public int UserId { get; set; }
 		public string UserName { get; set; }
+		public TimeSpan Progress { get; set; }
 		public IEnumerable<MarkerModel> Markers { get; set; }
 	}
 
