@@ -36,11 +36,15 @@ namespace Materialise.AF.Web
 				});
 			});
 
-			services.AddCors();
+			services.AddCors(o => o.AddPolicy("local", builder =>
+			{
+				builder.AllowAnyOrigin()
+					.AllowAnyHeader()
+					.AllowAnyMethod();
+			}));
 
 			services.Configure<TokenSettings>(Configuration.GetSection("TokenSettings"));
 
-			const string connection = "Data Source=.;Database=AF;Integrated Security=true";
 			services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetSection("ConnectionStrings")["DefaultConnection"]));
 		}
 
