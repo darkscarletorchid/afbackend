@@ -33,6 +33,7 @@ namespace Materialise.AF.Web.Controllers
 				.Include(q => q.User)
 				.Include(q => q.Marker)
 				.ThenInclude(q => q.UserMarkers)
+				.Where(q => q.User.IsActive)
 				.GroupBy(q => q.User)
 				.ToList();
 
@@ -57,6 +58,7 @@ namespace Materialise.AF.Web.Controllers
 		public IActionResult Index(int id)
 		{
 			var user = _dataContext.Users
+				.Where(q => q.IsActive)
 				.Include(q => q.UserMarkers)
 				.ThenInclude(q => q.Marker)
 				.FirstOrDefault(q => q.Id == id);
@@ -87,7 +89,7 @@ namespace Materialise.AF.Web.Controllers
 			CheckRequired("First Name", userRequest.FirstName);
 			CheckRequired("Last Name", userRequest.LastName);
 
-			var checkUser = _dataContext.Users.FirstOrDefault(q => q.Email.Equals(userRequest.Email, StringComparison.InvariantCultureIgnoreCase));
+			var checkUser = _dataContext.Users.FirstOrDefault(q => q.IsActive && q.Email.Equals(userRequest.Email, StringComparison.InvariantCultureIgnoreCase));
 			if (checkUser != null)
 				throw new Exception($"'{userRequest.Email}' already exists");
 
@@ -99,7 +101,8 @@ namespace Materialise.AF.Web.Controllers
 				LastName = userRequest.LastName,
 				Email = userRequest.Email,
 				RegistrationDate = DateTime.UtcNow,
-				Token = token
+				Token = token,
+				IsActive = true
 			};
 
 			_dataContext.Users.Add(user);

@@ -4,7 +4,8 @@ CREATE TABLE [dbo].[Users](
 	[LastName] [nvarchar](250) NOT NULL,
 	[Email] [nvarchar](250) NOT NULL,
 	[Token] [nvarchar](1024) NOT NULL,
-	[RegistrationDate] [datetime] NOT NULL,
+	[RegistrationDate][datetime] NOT NULL,
+	[IsActive][bit] NOT NULL
  CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

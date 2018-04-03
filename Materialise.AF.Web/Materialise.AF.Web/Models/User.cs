@@ -11,6 +11,7 @@ namespace Materialise.AF.Web.Models
 		public string Email { get; set; }
 		public string Token { get; set; }
 		public DateTime RegistrationDate { get; set; }
+		public bool IsActive { get; set; }
 
 		public virtual Collection<UserMarker> UserMarkers { get; set; }
 	}

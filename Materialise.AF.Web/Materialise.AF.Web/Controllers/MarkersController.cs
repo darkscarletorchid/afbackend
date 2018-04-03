@@ -27,7 +27,7 @@ namespace Materialise.AF.Web.Controllers
 		[HttpPost]
 		public IActionResult Index([FromBody] UserMarkerRequest request)
 		{
-			var user = _dataContext.Users.FirstOrDefault(q => q.Token == request.Token);
+			var user = _dataContext.Users.FirstOrDefault(q => q.Token == request.Token && q.IsActive);
 			if (user == null)
 				throw new Exception("User does not exist");
 
