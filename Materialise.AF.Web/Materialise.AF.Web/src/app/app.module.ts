@@ -58,6 +58,7 @@ import { UserService } from './services/user.service';
 import { LeaderboardService } from './services/leaderboard.service';
 
 const appRoutes: Routes = [
+  { path: '', component: RegisterComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'quest', component: CameraArComponent, canActivate: [CanActivateAuthGuard] },
   { path: 'leaderboard', component: LeaderboardComponent },

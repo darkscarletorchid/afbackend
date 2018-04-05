@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: "https://kiemworrlesn.matone.materialise/af/api"
+  apiEndpoint: "api"
 };
