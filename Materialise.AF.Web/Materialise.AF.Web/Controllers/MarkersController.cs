@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Materialise.AF.Web.Models;
 using Materialise.AF.Web.RequestModels;
@@ -43,8 +43,14 @@ namespace Materialise.AF.Web.Controllers
 			};
 
 			_dataContext.UserMarkers.Add(userMarker);
-			_dataContext.SaveChanges();
-
+      try
+      {
+        _dataContext.SaveChanges();
+      }
+      catch (Exception e)
+      {
+        
+      }
 			return Ok();
 		}
 	}
