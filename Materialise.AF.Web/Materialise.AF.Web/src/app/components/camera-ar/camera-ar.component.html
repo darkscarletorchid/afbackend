@@ -9,32 +9,122 @@
 </svg>
 
 <a-scene embedded arjs="debugUIEnabled: false; sourceType: webcam; trackingMethod: best; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+  <a-assets>
+    <a-asset-item id="m-obj" src="https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGlasses.obj?1522846713284"></a-asset-item>
+    <a-asset-item id="m-mtl" src="https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGlasses.mtl?1522846697183"></a-asset-item>
+    <a-asset-item id="a1-obj" src="assets/models/GoldStar.obj"></a-asset-item>
+    <a-asset-item id="a1-mtl" src="assets/models/GoldStar.obj"></a-asset-item>
+    <a-asset-item id="t-obj" src="assets/models/Car.obj"></a-asset-item>
+    <a-asset-item id="t-mtl" src="assets/models/Car.mtl"></a-asset-item>
+    <a-asset-item id="e1-obj" src="assets/models/Krab.obj"></a-asset-item>
+    <a-asset-item id="e1-mtl" src="assets/models/Krab.mtl"></a-asset-item>
+    <a-asset-item id="r-obj" src="assets/models/Ring.obj"></a-asset-item>
+    <a-asset-item id="r-mtl" src="assets/models/Ring.mtl"></a-asset-item>
+    <a-asset-item id="i1-obj" src="assets/models/Toy.obj"></a-asset-item>
+    <a-asset-item id="i1-mtl" src="assets/models/Toy.mtl"></a-asset-item>
+    <a-asset-item id="a2-obj" src="assets/models/VioletStar.obj"></a-asset-item>
+    <a-asset-item id="a2-mtl" src="assets/models/VioletStar.mtl"></a-asset-item>
+    <!--<a-asset-item id="l-obj" src="assets/models/"></a-asset-item>
+    <a-asset-item id="l-mtl" src="assets/models/"></a-asset-item>
+    <a-asset-item id="i2-obj" src="assets/models/"></a-asset-item>
+    <a-asset-item id="i2-mtl" src="assets/models/"></a-asset-item>
+    <a-asset-item id="s-obj" src="assets/models/"></a-asset-item>
+    <a-asset-item id="s-mtl" src="assets/models/"></a-asset-item>
+    <a-asset-item id="e2-obj" src="assets/models/"></a-asset-item>
+    <a-asset-item id="e2-mtl" src="assets/models/"></a-asset-item>-->
+  </a-assets>
 
-    <a-marker preset="custom" url="https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FM.patt?1522846745562" id="letter-m" registerevents>
-<!--   glasses -->
-      <a-entity
-      position="0 0 0"
-      scale="1 1 1"
-      rotation="90 0 0"
-      obj-model="obj: url(https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGlasses.obj?1522846713284);
-            mtl: url(https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGlasses.mtl?1522846697183)">
+  <!--TODO add animations for all models-->
+  <a-marker preset="custom" url="assets/markers/patterns/M.patt" id="letter-m" registerevents>
+    <!--   glasses -->
+    <a-entity position="0 0 0"
+              scale="1 1 1"
+              rotation="90 0 0"
+              obj-model="obj: #m-obj; mtl: #m-mtl">
       <a-animation attribute="rotation" direction="alternate" from="90 -55 0" to="90 55 0" dur="2500" easing="ease-sine" repeat="indefinite"></a-animation>
-      </a-entity>
-    </a-marker>
+    </a-entity>
+  </a-marker><a-marker preset="custom" url="assets/markers/patterns/A1.patt" id="letter-a1" registerevents>
+    <!--     goldstar -->
+    <a-entity id="model"
+              position="0 0 0"
+              scale="1 1 1"
+              rotation="90 0 0"
+              obj-model="obj: #a1-obj; mtl: #a1-mtl">
+      <a-animation attribute="scale" from="1 1 1" to="1.5 1.5 1.5" direction="alternate" dur="1000" easing="linear" repeat="indefinite"></a-animation>
+    </a-entity>
+  </a-marker>
+  <a-marker preset="custom" url="assets/markers/patterns/T.patt" id="letter-t" registerevents>
+    <a-entity position="0 0 0"
+              scale="1 1 1"
+              rotation="0 180 0"
+              obj-model="obj: #t-obj; mtl: #t-mtl">
+      <a-animation attribute="rotation" to="0 360 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
+    </a-entity>
+  </a-marker>
+  <a-marker preset="custom" url="assets/markers/patterns/E1.patt" id="letter-e1" registerevents>
+    <a-entity position="0 0 0"
+              scale="1 1 1"
+              rotation="0 180 0"
+              obj-model="obj: #e1-obj; mtl: #e1-mtl">
+      <a-animation attribute="rotation" to="0 360 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
+    </a-entity>
+  </a-marker>
+  <a-marker preset="custom" url="assets/markers/patterns/R.patt" id="letter-r" registerevents>
+    <a-entity position="0 0 0"
+              scale="1 1 1"
+              rotation="0 180 0"
+              obj-model="obj: #r-obj; mtl: #r-mtl">
+      <a-animation attribute="rotation" to="0 360 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
+    </a-entity>
+  </a-marker>
+  <a-marker preset="custom" url="assets/markers/patterns/I1.patt" id="letter-i1" registerevents>
+    <a-entity position="0 0 0"
+              scale="1 1 1"
+              rotation="0 180 0"
+              obj-model="obj: #i1-obj; mtl: #i1-mtl">
 
-    <a-marker preset="custom" url="https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FA1.patt?1522846743860" id="letter-a1" registerevents>
-      <!--     goldstar -->
-      <a-entity
-        id="model"
-        position="0 0 0"
-        scale="1 1 1"
-        rotation="90 0 0"
-        obj-model="obj: url(https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGoldStar.obj?1522846698003);
-              mtl: url(https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGoldStar.mtl?1522846697567)">
-        <a-animation attribute="scale" from="1 1 1" to="1.5 1.5 1.5" direction="alternate" dur="1000" easing="linear" repeat="indefinite"></a-animation>
-      </a-entity>
-    </a-marker>
-
+      <a-animation attribute="rotation" to="0 360 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
+    </a-entity>
+  </a-marker>
+  <a-marker preset="custom" url="assets/markers/patterns/A2.patt" id="letter-a2" registerevents>
+    <a-entity position="0 0 0"
+              scale="1 1 1"
+              rotation="0 180 0"
+              obj-model="obj: #a2-obj; mtl: #a2-mtl">
+      <a-animation attribute="rotation" to="0 360 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
+    </a-entity>
+  </a-marker>
+  <a-marker preset="custom" url="assets/markers/patterns/L.patt" id="letter-l" registerevents>
+    <a-entity position="0 0 0"
+              scale="1 1 1"
+              rotation="0 180 0"
+              obj-model="obj: #l-obj; mtl: #l-mtl">
+      <a-animation attribute="rotation" to="0 360 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
+    </a-entity>
+  </a-marker>
+  <a-marker preset="custom" url="assets/markers/patterns/I2.patt" id="letter-i2" registerevents>
+    <a-entity position="0 0 0"
+              scale="1 1 1"
+              rotation="0 180 0"
+              obj-model="obj: #i2-obj; mtl: #i2-mtl">
+      <a-animation attribute="rotation" to="0 360 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
+    </a-entity>
+  </a-marker>
+  <a-marker preset="custom" url="assets/markers/patterns/S.patt" id="letter-s" registerevents>
+    <a-entity position="0 0 0"
+              scale="1 1 1"
+              rotation="0 180 0"
+              obj-model="obj: #s-obj; mtl: #s-mtl">
+      <a-animation attribute="rotation" to="0 360 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
+    </a-entity>
+  </a-marker>
+  <a-marker preset="custom" url="assets/markers/patterns/E2.patt" id="letter-e2" registerevents>
+    <a-entity position="0 0 0"
+              scale="1 1 1"
+              rotation="0 180 0"
+              obj-model="obj: #e2-obj; mtl: #e2-mtl">
+      <a-animation attribute="rotation" to="0 360 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
+    </a-entity>
+  </a-marker>
   <a-entity camera position="0 0 5"></a-entity>
-
 </a-scene>

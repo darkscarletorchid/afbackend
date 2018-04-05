@@ -4,6 +4,6 @@ export class ItemProgress {
 }
 
 export class UserItem {
-  userToken: string;
-  itemId: string;
+  token: string;
+  marker: string;
 }

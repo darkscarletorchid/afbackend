@@ -15,10 +15,11 @@ import {MatSnackBar} from '@angular/material';
 export class CameraArComponent implements OnInit {
 
   user: User;
-  userItem: UserItem;
   itemsFound: string[];
   actualCount: number;
-  progress:string;
+  progress: string;
+  userItem: UserItem = new UserItem();
+  loading: boolean = false;
 
   constructor(private progressService: ProgressService, private userService: UserService, public snackBar : MatSnackBar) { }
 
@@ -28,10 +29,8 @@ export class CameraArComponent implements OnInit {
   }
   @HostListener('markerFound', ['$event.target'])
   onMarkerFound(target) {
-    this.userItem.itemId = target.id;
-    this.userItem.userToken = this.userService.getCurrentUserToken();
-
-    console.log(target.id);
+    this.userItem.marker = target.id;
+    this.userItem.token = this.userService.getCurrentUserToken();
     this.progressService.addToProgress(this.userItem)
        .subscribe(result => this.progressService.getProgressByUser(this.user.id)
          .subscribe(data => {
@@ -39,7 +38,6 @@ export class CameraArComponent implements OnInit {
            this.actualCount = data.markers.length;
            this.progress = data.progress;
            this.snackBar.open('New object found!', '', { duration: 3000, panelClass: 'custom-snackbar' });
-
     }));
   }
   getProgressByUser(id: number): void {
