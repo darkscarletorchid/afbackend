@@ -1,0 +1,40 @@
+<svg width="500" height="100" class="result-circle">
+  <g>
+  <circle cx="50" cy="50" r="40" stroke="white" stroke-width="4" fill="#9C27B0" />
+  <text x="22" y="60" font-family="Verdana" font-size="25" fill="white">{{this.actualCount}}</text>
+  <text x="38" y="60" font-family="Verdana" font-size="25" fill="white">/11</text>
+  <text x="95" y="57" font-family="Verdana" font-size="20" fill="#9C27B0">models found</text>
+  <line x1="90" y1="60" x2="230" y2="60" style="stroke:white;stroke-width:1" />
+  </g>
+</svg>
+
+<a-scene embedded arjs="debugUIEnabled: false; sourceType: webcam; trackingMethod: best; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+
+    <a-marker preset="custom" url="https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FM.patt?1522846745562" id="letter-m" registerevents>
+<!--   glasses -->
+      <a-entity
+      position="0 0 0"
+      scale="1 1 1"
+      rotation="90 0 0"
+      obj-model="obj: url(https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGlasses.obj?1522846713284);
+            mtl: url(https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGlasses.mtl?1522846697183)">
+      <a-animation attribute="rotation" direction="alternate" from="90 -55 0" to="90 55 0" dur="2500" easing="ease-sine" repeat="indefinite"></a-animation>
+      </a-entity>
+    </a-marker>
+
+    <a-marker preset="custom" url="https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FA1.patt?1522846743860" id="letter-a1" registerevents>
+      <!--     goldstar -->
+      <a-entity
+        id="model"
+        position="0 0 0"
+        scale="1 1 1"
+        rotation="90 0 0"
+        obj-model="obj: url(https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGoldStar.obj?1522846698003);
+              mtl: url(https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGoldStar.mtl?1522846697567)">
+        <a-animation attribute="scale" from="1 1 1" to="1.5 1.5 1.5" direction="alternate" dur="1000" easing="linear" repeat="indefinite"></a-animation>
+      </a-entity>
+    </a-marker>
+
+  <a-entity camera position="0 0 5"></a-entity>
+
+</a-scene>

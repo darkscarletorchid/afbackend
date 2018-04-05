@@ -1,0 +1,21 @@
+<app-header></app-header>
+<section class="form-container">
+  <form class="register-form" (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <h1>Registration for Materialise AR Quest</h1>
+
+    <mat-form-field>
+      <input matInput placeholder="First name" type="text" required [(ngModel)]="model.firstName" name="firstName">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Last Name" type="text" required [(ngModel)]="model.lastName" name="lastName">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="E-mail" type="text" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="model.email"
+        name="email">
+    </mat-form-field>
+
+    <button type="submit" mat-button [disabled]="!registerForm.form.valid || loading">Start quest 🚀</button>
+  </form>
+</section>

@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/purple-green.css";
+.main {
+  margin: 0;
+  background: #303030;
+  color: white;
+}
+
+.custom-snackbar {
+  color: white;
+  background-color: #2F3030;
+  text-align: center;
+}
