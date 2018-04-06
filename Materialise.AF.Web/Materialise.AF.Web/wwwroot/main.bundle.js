@@ -134,6 +134,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var appRoutes = [
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_13__components_register_register_component__["a" /* RegisterComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_13__components_register_register_component__["a" /* RegisterComponent */] },
     { path: 'quest', component: __WEBPACK_IMPORTED_MODULE_10__components_camera_ar_camera_ar_component__["a" /* CameraArComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_14__services_canActivateAuthGuard_service__["a" /* CanActivateAuthGuard */]] },
     { path: 'leaderboard', component: __WEBPACK_IMPORTED_MODULE_11__components_leaderboard_leaderboard_component__["a" /* LeaderboardComponent */] },
@@ -255,7 +256,7 @@ module.exports = ".result-circle {\r\n  position: fixed;\r\n  top: 0;\r\n  left:
 /***/ "./src/app/components/camera-ar/camera-ar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<svg width=\"500\" height=\"100\" class=\"result-circle\">\r\n  <g>\r\n  <circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"white\" stroke-width=\"4\" fill=\"#9C27B0\" />\r\n  <text x=\"22\" y=\"60\" font-family=\"Verdana\" font-size=\"25\" fill=\"white\">{{this.actualCount}}</text>\r\n  <text x=\"38\" y=\"60\" font-family=\"Verdana\" font-size=\"25\" fill=\"white\">/11</text>\r\n  <text x=\"95\" y=\"57\" font-family=\"Verdana\" font-size=\"20\" fill=\"#9C27B0\">models found</text>\r\n  <line x1=\"90\" y1=\"60\" x2=\"230\" y2=\"60\" style=\"stroke:white;stroke-width:1\" />\r\n  </g>\r\n</svg>\r\n\r\n<a-scene embedded arjs=\"debugUIEnabled: false; sourceType: webcam; trackingMethod: best; detectionMode: mono_and_matrix; matrixCodeType: 3x3;\">\r\n\r\n    <a-marker preset=\"custom\" url=\"https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FM.patt?1522846745562\" id=\"letter-m\" registerevents>\r\n<!--   glasses -->\r\n      <a-entity\r\n      position=\"0 0 0\"\r\n      scale=\"1 1 1\"\r\n      rotation=\"90 0 0\"\r\n      obj-model=\"obj: url(https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGlasses.obj?1522846713284);\r\n            mtl: url(https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGlasses.mtl?1522846697183)\">\r\n      <a-animation attribute=\"rotation\" direction=\"alternate\" from=\"90 -55 0\" to=\"90 55 0\" dur=\"2500\" easing=\"ease-sine\" repeat=\"indefinite\"></a-animation>\r\n      </a-entity>\r\n    </a-marker>\r\n\r\n    <a-marker preset=\"custom\" url=\"https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FA1.patt?1522846743860\" id=\"letter-a1\" registerevents>\r\n      <!--     goldstar -->\r\n      <a-entity\r\n        id=\"model\"\r\n        position=\"0 0 0\"\r\n        scale=\"1 1 1\"\r\n        rotation=\"90 0 0\"\r\n        obj-model=\"obj: url(https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGoldStar.obj?1522846698003);\r\n              mtl: url(https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGoldStar.mtl?1522846697567)\">\r\n        <a-animation attribute=\"scale\" from=\"1 1 1\" to=\"1.5 1.5 1.5\" direction=\"alternate\" dur=\"1000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n      </a-entity>\r\n    </a-marker>\r\n\r\n  <a-entity camera position=\"0 0 5\"></a-entity>\r\n\r\n</a-scene>\r\n"
+module.exports = "<svg width=\"500\" height=\"100\" class=\"result-circle\">\n  <g>\n  <circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"white\" stroke-width=\"4\" fill=\"#9C27B0\" />\n  <text x=\"22\" y=\"60\" font-family=\"Verdana\" font-size=\"25\" fill=\"white\">{{this.actualCount}}</text>\n  <text x=\"38\" y=\"60\" font-family=\"Verdana\" font-size=\"25\" fill=\"white\">/11</text>\n  <text x=\"95\" y=\"57\" font-family=\"Verdana\" font-size=\"20\" fill=\"#9C27B0\">models found</text>\n  <line x1=\"90\" y1=\"60\" x2=\"230\" y2=\"60\" style=\"stroke:white;stroke-width:1\" />\n  </g>\n</svg>\n\n<a-scene embedded arjs=\"debugUIEnabled: false; sourceType: webcam; trackingMethod: best; detectionMode: mono_and_matrix; matrixCodeType: 3x3;\">\r\n  <a-assets>\r\n    <a-asset-item id=\"m-obj\" src=\"https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGlasses.obj?1522846713284\"></a-asset-item>\r\n    <a-asset-item id=\"m-mtl\" src=\"https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGlasses.mtl?1522846697183\"></a-asset-item>\r\n    <a-asset-item id=\"a1-obj\" src=\"assets/models/GoldStar.obj\"></a-asset-item>\r\n    <a-asset-item id=\"a1-mtl\" src=\"assets/models/GoldStar.obj\"></a-asset-item>\r\n    <a-asset-item id=\"t-obj\" src=\"assets/models/Car.obj\"></a-asset-item>\r\n    <a-asset-item id=\"t-mtl\" src=\"assets/models/Car.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"e1-obj\" src=\"assets/models/Krab.obj\"></a-asset-item>\r\n    <a-asset-item id=\"e1-mtl\" src=\"assets/models/Krab.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"r-obj\" src=\"assets/models/Ring.obj\"></a-asset-item>\r\n    <a-asset-item id=\"r-mtl\" src=\"assets/models/Ring.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"i1-obj\" src=\"assets/models/Toy.obj\"></a-asset-item>\r\n    <a-asset-item id=\"i1-mtl\" src=\"assets/models/Toy.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"a2-obj\" src=\"assets/models/VioletStar.obj\"></a-asset-item>\r\n    <a-asset-item id=\"a2-mtl\" src=\"assets/models/VioletStar.mtl\"></a-asset-item>\r\n    <!--<a-asset-item id=\"l-obj\" src=\"assets/models/\"></a-asset-item>\r\n    <a-asset-item id=\"l-mtl\" src=\"assets/models/\"></a-asset-item>\r\n    <a-asset-item id=\"i2-obj\" src=\"assets/models/\"></a-asset-item>\r\n    <a-asset-item id=\"i2-mtl\" src=\"assets/models/\"></a-asset-item>\r\n    <a-asset-item id=\"s-obj\" src=\"assets/models/\"></a-asset-item>\r\n    <a-asset-item id=\"s-mtl\" src=\"assets/models/\"></a-asset-item>\r\n    <a-asset-item id=\"e2-obj\" src=\"assets/models/\"></a-asset-item>\r\n    <a-asset-item id=\"e2-mtl\" src=\"assets/models/\"></a-asset-item>-->\r\n  </a-assets>\r\n\r\n  <!--TODO add animations for all models-->\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/M.patt\" id=\"letter-m\" registerevents>\r\n    <!--   glasses -->\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"90 0 0\"\r\n              obj-model=\"obj: #m-obj; mtl: #m-mtl\">\r\n      <a-animation attribute=\"rotation\" direction=\"alternate\" from=\"90 -55 0\" to=\"90 55 0\" dur=\"2500\" easing=\"ease-sine\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker><a-marker preset=\"custom\" url=\"assets/markers/patterns/A1.patt\" id=\"letter-a1\" registerevents>\r\n    <!--     goldstar -->\r\n    <a-entity id=\"model\"\r\n              position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"90 0 0\"\r\n              obj-model=\"obj: #a1-obj; mtl: #a1-mtl\">\r\n      <a-animation attribute=\"scale\" from=\"1 1 1\" to=\"1.5 1.5 1.5\" direction=\"alternate\" dur=\"1000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/T.patt\" id=\"letter-t\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #t-obj; mtl: #t-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/E1.patt\" id=\"letter-e1\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #e1-obj; mtl: #e1-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/R.patt\" id=\"letter-r\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #r-obj; mtl: #r-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/I1.patt\" id=\"letter-i1\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #i1-obj; mtl: #i1-mtl\">\r\n\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/A2.patt\" id=\"letter-a2\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #a2-obj; mtl: #a2-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/L.patt\" id=\"letter-l\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #l-obj; mtl: #l-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/I2.patt\" id=\"letter-i2\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #i2-obj; mtl: #i2-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/S.patt\" id=\"letter-s\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #s-obj; mtl: #s-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/E2.patt\" id=\"letter-e2\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #e2-obj; mtl: #e2-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-entity camera position=\"0 0 5\"></a-entity>\r\n</a-scene>\n"
 
 /***/ }),
 
@@ -265,9 +266,10 @@ module.exports = "<svg width=\"500\" height=\"100\" class=\"result-circle\">\r\n
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CameraArComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_progress_service__ = __webpack_require__("./src/app/services/progress.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_user_service__ = __webpack_require__("./src/app/services/user.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_item__ = __webpack_require__("./src/app/models/item.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_progress_service__ = __webpack_require__("./src/app/services/progress.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_user_service__ = __webpack_require__("./src/app/services/user.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -281,11 +283,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CameraArComponent = /** @class */ (function () {
     function CameraArComponent(progressService, userService, snackBar) {
         this.progressService = progressService;
         this.userService = userService;
         this.snackBar = snackBar;
+        this.userItem = new __WEBPACK_IMPORTED_MODULE_1__models_item__["a" /* UserItem */]();
+        this.loading = false;
     }
     CameraArComponent.prototype.ngOnInit = function () {
         this.user = this.userService.getCurrentUser();
@@ -293,9 +298,8 @@ var CameraArComponent = /** @class */ (function () {
     };
     CameraArComponent.prototype.onMarkerFound = function (target) {
         var _this = this;
-        this.userItem.itemId = target.id;
-        this.userItem.userToken = this.userService.getCurrentUserToken();
-        console.log(target.id);
+        this.userItem.marker = target.id;
+        this.userItem.token = this.userService.getCurrentUserToken();
         this.progressService.addToProgress(this.userItem)
             .subscribe(function (result) { return _this.progressService.getProgressByUser(_this.user.id)
             .subscribe(function (data) {
@@ -326,7 +330,7 @@ var CameraArComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/components/camera-ar/camera-ar.component.html"),
             styles: [__webpack_require__("./src/app/components/camera-ar/camera-ar.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_progress_service__["a" /* ProgressService */], __WEBPACK_IMPORTED_MODULE_2__services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_3__angular_material__["z" /* MatSnackBar */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_progress_service__["a" /* ProgressService */], __WEBPACK_IMPORTED_MODULE_3__services_user_service__["a" /* UserService */], __WEBPACK_IMPORTED_MODULE_4__angular_material__["z" /* MatSnackBar */]])
     ], CameraArComponent);
     return CameraArComponent;
 }());
@@ -345,7 +349,7 @@ module.exports = ".float-left {\r\n\r\n}\r\n\r\n.float-right {\r\n\r\n}\r\n"
 /***/ "./src/app/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = " <mat-toolbar color=\"primary\">\r\n    <span class=\"float-left\">Materialise AR Quest</span>\r\n </mat-toolbar>\r\n"
+module.exports = " <mat-toolbar color=\"primary\">\r\n   <span class=\"float-left\">Materialise 3D-printing AR Quest</span>\r\n </mat-toolbar>\r\n"
 
 /***/ }),
 
@@ -467,7 +471,7 @@ module.exports = ".register-form {\r\n    display: -webkit-box;\r\n    display: 
 /***/ "./src/app/components/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\r\n<section class=\"form-container\">\r\n  <form class=\"register-form\" (ngSubmit)=\"onSubmit()\" #registerForm=\"ngForm\">\r\n    <h1>Registration for Materialise AR Quest</h1>\r\n\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"First name\" type=\"text\" required [(ngModel)]=\"model.firstName\" name=\"firstName\">\r\n    </mat-form-field>\r\n\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Last Name\" type=\"text\" required [(ngModel)]=\"model.lastName\" name=\"lastName\">\r\n    </mat-form-field>\r\n\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"E-mail\" type=\"text\" required pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\" [(ngModel)]=\"model.email\"\r\n        name=\"email\">\r\n    </mat-form-field>\r\n\r\n    <button type=\"submit\" mat-button [disabled]=\"!registerForm.form.valid || loading\">Start quest 🚀</button>\r\n  </form>\r\n</section>"
+module.exports = "<app-header></app-header>\r\n<section class=\"form-container\">\r\n  <form class=\"register-form\" (ngSubmit)=\"onSubmit()\" #registerForm=\"ngForm\">\r\n    <h1>Quest Registration</h1>\r\n\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"First name\" type=\"text\" required [(ngModel)]=\"model.firstName\" name=\"firstName\">\r\n    </mat-form-field>\r\n\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"Last Name\" type=\"text\" required [(ngModel)]=\"model.lastName\" name=\"lastName\">\r\n    </mat-form-field>\r\n\r\n    <mat-form-field>\r\n      <input matInput placeholder=\"E-mail\" type=\"text\" required pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\" [(ngModel)]=\"model.email\"\r\n        name=\"email\">\r\n    </mat-form-field>\r\n\r\n    <button type=\"submit\" mat-button [disabled]=\"!registerForm.form.valid || loading\">Start quest 🚀</button>\r\n  </form>\r\n</section>\r\n"
 
 /***/ }),
 
@@ -531,6 +535,28 @@ var RegisterComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_2__angular_material__["z" /* MatSnackBar */]])
     ], RegisterComponent);
     return RegisterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/item.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export ItemProgress */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserItem; });
+var ItemProgress = /** @class */ (function () {
+    function ItemProgress() {
+    }
+    return ItemProgress;
+}());
+
+var UserItem = /** @class */ (function () {
+    function UserItem() {
+    }
+    return UserItem;
 }());
 
 
@@ -816,13 +842,9 @@ var UserService = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
-// The file contents for the current environment will overwrite these during build.
-// The build system defaults to the dev environment which uses `environment.ts`, but if you do
-// `ng build --env=prod` then `environment.prod.ts` will be used instead.
-// The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
-    production: false,
-    apiEndpoint: "https://kiemworrlesn.matone.materialise/af/api"
+    production: true,
+    apiEndpoint: "api"
 };
 
 
@@ -859,4 +881,3 @@ module.exports = __webpack_require__("./src/main.ts");
 /***/ })
 
 },[0]);
-//# sourceMappingURL=main.bundle.js.map

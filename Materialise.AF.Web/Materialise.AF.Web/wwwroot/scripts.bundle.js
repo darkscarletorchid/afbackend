@@ -14,4 +14,3 @@ AFRAME.registerComponent('registerevents', {
 });
 
 ;
-//# sourceMappingURL=scripts.bundle.js.map

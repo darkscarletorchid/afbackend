@@ -57,7 +57,7 @@ namespace Materialise.AF.Web
         app.UseExceptionHandler("/Error");
       }
 
-      app.UseDefaultFiles();
+      //app.UseDefaultFiles();
       app.UseStaticFiles(new StaticFileOptions
       {
         ServeUnknownFileTypes = true,
