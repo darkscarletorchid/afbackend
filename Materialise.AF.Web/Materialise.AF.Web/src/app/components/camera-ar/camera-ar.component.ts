@@ -16,7 +16,7 @@ export class CameraArComponent implements OnInit {
 
   user: User;
   itemsFound: string[];
-  actualCount: number;
+  actualCount: number = 0;
   progress: string;
   userItem: UserItem = new UserItem();
   loading: boolean = false;
@@ -43,7 +43,6 @@ export class CameraArComponent implements OnInit {
   getProgressByUser(id: number): void {
     this.progressService.getProgressByUser(id)
       .subscribe(data => {
-        console.log(data);
         this.itemsFound = data.markers;
         this.actualCount = data.markers.length;
       }, error => {});

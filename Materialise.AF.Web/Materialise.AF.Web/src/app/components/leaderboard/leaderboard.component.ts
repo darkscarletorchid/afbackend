@@ -26,7 +26,6 @@ export class LeaderboardComponent implements OnInit {
     TimerObservable.create(0, this.interval).subscribe(() => {
       this.leaderboardService.getTopUser().subscribe(
         data => {
-          console.log(data);
           this.leaders = data;
         },
         error => {
