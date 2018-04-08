@@ -11,3 +11,7 @@
   background-color: #2F3030;
   text-align: center;
 }
+
+video {
+  z-index: 2 !important;
+}
