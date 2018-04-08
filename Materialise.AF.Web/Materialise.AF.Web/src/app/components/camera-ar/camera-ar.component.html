@@ -81,14 +81,14 @@
       <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" direction="alternate" dur="1000" easing="linear" repeat="indefinite"></a-animation>
     </a-entity>
   </a-marker>
-  <!--<a-marker preset="custom" url="assets/markers/patterns/I2.patt" id="letter-i2" registerevents>
-    <a-entity position="0 0 0"
+  <a-marker preset="custom" url="assets/markers/patterns/I2.patt" id="letter-i2" registerevents>
+    <a-entity position="0 -4 3"
               scale="1 1 1"
-              rotation="0 180 0"
+              rotation="-90 0 0"
               obj-model="obj: url(assets/models/PencilHolder.obj); mtl: url(assets/models/PencilHolder.mtl)">
-      <a-animation attribute="rotation" to="0 360 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
+      <!--<a-animation attribute="rotation" from="-90 0 0" to="-90 0 0" dur="2000" direction="alternate" easing="linear" repeat="indefinite"></a-animation>-->
     </a-entity>
-  </a-marker>-->
+  </a-marker>
   <!--<a-marker preset="custom" url="assets/markers/patterns/S.patt" id="letter-s" registerevents>
     <a-entity position="0 0 0"
               scale="1 1 1"
@@ -97,13 +97,14 @@
       <a-animation attribute="rotation" to="0 360 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
     </a-entity>
   </a-marker>-->
-  <!--<a-marker preset="custom" url="assets/markers/patterns/E2.patt" id="letter-e2" registerevents>
+  <a-marker preset="custom" url="assets/markers/patterns/E2.patt" id="letter-e2" registerevents>
+    <!--make material lighter-->
     <a-entity position="0 0 0"
-              scale="1 1 1"
+              scale="2.5 2.5 2.5"
               rotation="0 180 0"
               obj-model="obj: url(assets/models/Fork.obj); mtl: url(assets/models/Fork.mtl)">
-      <a-animation attribute="rotation" to="0 360 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
+      <a-animation attribute="rotation" from="25 180 0" to="-25 180 0" direction="alternate" dur="2500" easing="linear" repeat="indefinite"></a-animation>
     </a-entity>
-  </a-marker>-->
+  </a-marker>
   <a-entity camera position="0 0 15"></a-entity>
 </a-scene>
