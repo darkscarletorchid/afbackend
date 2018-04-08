@@ -35,9 +35,12 @@ export class CameraArComponent implements OnInit {
        .subscribe(result => this.progressService.getProgressByUser(this.user.id)
          .subscribe(data => {
            this.itemsFound = data.markers;
+           var prevCount = this.actualCount;
            this.actualCount = data.markers.length;
            this.progress = data.progress;
-           this.snackBar.open('New object found!', '', { duration: 3000, panelClass: 'custom-snackbar' });
+           if (this.actualCount !== prevCount) {
+             this.snackBar.open('New object found!', '', { duration: 3000, panelClass: 'custom-snackbar' });
+           }
     }));
   }
   getProgressByUser(id: number): void {

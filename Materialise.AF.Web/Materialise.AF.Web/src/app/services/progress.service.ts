@@ -20,7 +20,6 @@ export class ProgressService {
 
   public getProgressByUser (id: number): Observable<ItemProgress> {
     return this.httpClient.get<ItemProgress>(environment.apiEndpoint + '/user/' + id).map(data => {
-        console.log(data);
         return data;
     });
   }
