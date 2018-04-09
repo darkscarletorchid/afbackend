@@ -16,10 +16,11 @@ export class CameraArComponent implements OnInit {
 
   user: User;
   itemsFound: string[];
-  actualCount: string = '0';
+  actualCount: string = '00';
   progress: string;
   userItem: UserItem = new UserItem();
   loading: boolean = false;
+  title: string;
 
   constructor(private progressService: ProgressService, private userService: UserService, public snackBar : MatSnackBar) { }
 
@@ -30,6 +31,7 @@ export class CameraArComponent implements OnInit {
   @HostListener('markerFound', ['$event.target'])
   onMarkerFound(target) {
     this.userItem.marker = target.id;
+    this.title = target.title;
     this.userItem.token = this.userService.getCurrentUserToken();
     this.progressService.addToProgress(this.userItem)
        .subscribe(result => this.progressService.getProgressByUser(this.user.id)
@@ -42,7 +44,7 @@ export class CameraArComponent implements OnInit {
            }
            this.progress = data.progress;
            if (this.actualCount !== prevCount) {
-             this.snackBar.open('New object found!', '', { duration: 3000, panelClass: 'custom-snackbar' });
+             this.snackBar.open('You found ' + this.title + '!', '', { duration: 3000, panelClass: 'custom - snackbar' });
            }
     }));
   }

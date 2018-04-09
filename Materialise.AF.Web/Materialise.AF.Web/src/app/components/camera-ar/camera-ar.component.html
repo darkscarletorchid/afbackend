@@ -6,7 +6,7 @@
 <svg width="500" height="100" class="result-circle">
   <g>
   <circle cx="50" cy="50" r="40" stroke="white" stroke-width="4" fill="#9C27B0" />
-  <text x="19" y="60" font-family="Verdana" font-size="20" fill="white">{{this.actualCount}}</text>
+  <text x="20" y="60" font-family="Verdana" font-size="20" fill="white">{{this.actualCount}}</text>
   <text x="46" y="60" font-family="Verdana" font-size="20" fill="white">/11</text>
   <text x="95" y="57" font-family="Verdana" font-size="20" fill="#9C27B0">models found</text>
   <line x1="90" y1="60" x2="230" y2="60" style="stroke:white;stroke-width:1" />
@@ -15,7 +15,7 @@
 <a-scene embedded loader arjs="debugUIEnabled: false; sourceType: webcam; trackingMethod: best; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
 
   <!--TODO add animations for all models-->
-  <a-marker preset="custom" url="assets/markers/patterns/M.patt" id="letter-m" registerevents>
+  <a-marker preset="custom" url="assets/markers/patterns/M.patt" id="letter-m" title="glasses" registerevents>
     <a-entity position="0 0 0"
               scale="1 1 1"
               rotation="0 0 0"
@@ -23,7 +23,7 @@
       <a-animation attribute="rotation" direction="alternate" from="75 -90 90" to="105 -90 90" dur="2500" easing="ease-sine" repeat="indefinite"></a-animation>
     </a-entity>
   </a-marker>
-  <a-marker preset="custom" url="assets/markers/patterns/A1.patt" id="letter-a1" registerevents>
+  <a-marker preset="custom" url="assets/markers/patterns/A1.patt" id="letter-a1" title="golden star" registerevents>
     <a-entity id="model"
               position="0 0 0"
               scale="1 1 1"
@@ -65,7 +65,7 @@
       <a-animation attribute="rotation" to="0 360 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
     </a-entity>
   </a-marker>-->
-  <a-marker preset="custom" url="assets/markers/patterns/A2.patt" id="letter-a2" registerevents>
+  <a-marker preset="custom" url="assets/markers/patterns/A2.patt" id="letter-a2" title="chess king" registerevents>
     <a-entity position="0 0 0"
               scale="0.9 0.9 0.9"
               rotation="-90 0 0"
@@ -73,7 +73,7 @@
       <a-animation attribute="position" from="-3 0 0" to="3 0 0" dur="5000" direction="alternate" easing="linear" repeat="indefinite"></a-animation>
     </a-entity>
   </a-marker>
-  <a-marker preset="custom" url="assets/markers/patterns/L.patt" id="letter-l" registerevents>
+  <a-marker preset="custom" url="assets/markers/patterns/L.patt" id="letter-l" title="soap holder" registerevents>
     <a-entity position="0 0 0"
               scale="1 1 1"
               rotation="0 0 10"
@@ -81,24 +81,23 @@
       <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" direction="alternate" dur="1000" easing="linear" repeat="indefinite"></a-animation>
     </a-entity>
   </a-marker>
-  <a-marker preset="custom" url="assets/markers/patterns/I2.patt" id="letter-i2" registerevents>
+  <a-marker preset="custom" url="assets/markers/patterns/I2.patt" id="letter-i2" title="pencil holder" registerevents>
     <a-entity position="0 -4 3"
               scale="1 1 1"
               rotation="-90 0 0"
               obj-model="obj: url(assets/models/PencilHolder.obj); mtl: url(assets/models/PencilHolder.mtl)">
-      <!--<a-animation attribute="rotation" from="-90 0 0" to="-90 0 0" dur="2000" direction="alternate" easing="linear" repeat="indefinite"></a-animation>-->
     </a-entity>
+    <a-animation attribute="position" from="-2 0 0" to="2 0 0" dur="5000" direction="alternate" easing="linear" repeat="indefinite"></a-animation>
   </a-marker>
-  <!--<a-marker preset="custom" url="assets/markers/patterns/S.patt" id="letter-s" registerevents>
+  <a-marker preset="custom" url="assets/markers/patterns/S.patt" id="letter-s" title="ring" registerevents>
     <a-entity position="0 0 0"
               scale="1 1 1"
-              rotation="0 180 0"
-              obj-model="obj: url(assets/models/VioletStar.obj); mtl: url(assets/models/VioletStar.mtl)">
-      <a-animation attribute="rotation" to="0 360 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>
+              rotation="45 0 0"
+              obj-model="obj: url(assets/models/Ring2.obj); mtl: url(assets/models/Ring2.mtl)">
+      <a-animation attribute="scale" from="1 1 1" to="1.5 1.5 1.5" direction="alternate" dur="1000" easing="linear" repeat="indefinite"></a-animation>
     </a-entity>
-  </a-marker>-->
-  <a-marker preset="custom" url="assets/markers/patterns/E2.patt" id="letter-e2" registerevents>
-    <!--make material lighter-->
+  </a-marker>
+  <a-marker preset="custom" url="assets/markers/patterns/E2.patt" id="letter-e2" title="fork" registerevents>
     <a-entity position="0 0 0"
               scale="2.5 2.5 2.5"
               rotation="0 180 0"
