@@ -44,7 +44,8 @@ export class CameraArComponent implements OnInit {
            }
            this.progress = data.progress;
            if (this.actualCount !== prevCount) {
-             this.snackBar.open('You found ' + this.title + '!', '', { duration: 3000, panelClass: 'custom - snackbar' });
+             var output = 'You found ' + this.title + '!';
+             this.snackBar.open(output, '', { duration: 3000, panelClass: 'custom-snackbar' });
            }
     }));
   }
