@@ -16,7 +16,7 @@ export class CameraArComponent implements OnInit {
 
   user: User;
   itemsFound: string[];
-  actualCount: number = 0;
+  actualCount: string = '0';
   progress: string;
   userItem: UserItem = new UserItem();
   loading: boolean = false;
@@ -36,7 +36,10 @@ export class CameraArComponent implements OnInit {
          .subscribe(data => {
            this.itemsFound = data.markers;
            var prevCount = this.actualCount;
-           this.actualCount = data.markers.length;
+           this.actualCount = data.markers.length.toString();
+           if (data.markers.length < 10) {
+             this.actualCount = '0' + this.actualCount;
+           }
            this.progress = data.progress;
            if (this.actualCount !== prevCount) {
              this.snackBar.open('New object found!', '', { duration: 3000, panelClass: 'custom-snackbar' });
@@ -47,7 +50,10 @@ export class CameraArComponent implements OnInit {
     this.progressService.getProgressByUser(id)
       .subscribe(data => {
         this.itemsFound = data.markers;
-        this.actualCount = data.markers.length;
+        this.actualCount = data.markers.length.toString();
+        if (data.markers.length < 10) {
+          this.actualCount = '0' + this.actualCount;
+        }
       }, error => {});
   }
 }
