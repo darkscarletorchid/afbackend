@@ -18,10 +18,10 @@
 **/*.sbr
 **/[Rr]elease*/
 **/_ReSharper*/
-**/bin/
-**/obj/
+Materialise.AF.Web/**/bin/
+Materialise.AF.Web/**/obj/
 **/node_modules/
-**/.vs/
+Materialise.AF.Web/Materialise.AF.Web/.vs/
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
