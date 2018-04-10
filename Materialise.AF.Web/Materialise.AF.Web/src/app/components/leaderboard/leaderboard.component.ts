@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { TimerObservable } from "rxjs/observable/TimerObservable";
 
@@ -12,15 +12,15 @@ import { LeaderboardService } from '../../services/leaderboard.service'
   styleUrls: ['./leaderboard.component.css']
 })
 export class LeaderboardComponent implements OnInit {
-  
   leaders: LeaderboardItem[] = [];
   interval = 60000 * 5; //5 min
   displayedColumns = ['no', 'userName', 'itemsFound', 'progress'];
   lastUpdated: Date;
   
-  constructor(private leaderboardService: LeaderboardService) { }
+  constructor(private leaderboardService: LeaderboardService) {
+  }
 
-  ngOnInit() {    
+  ngOnInit() {
     this.lastUpdated = new Date();
 
     TimerObservable.create(0, this.interval).subscribe(() => {
@@ -28,9 +28,9 @@ export class LeaderboardComponent implements OnInit {
         data => {
           this.leaders = data;
         },
-        error => {
+        () => {
           console.log("error occured");
-        })
+        });
 
         this.lastUpdated = new Date(Date.now());
       });

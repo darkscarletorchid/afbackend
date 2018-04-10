@@ -13,12 +13,12 @@ AFRAME.registerComponent('registerevents', {
   }
 });
 
-//AFRAME.registerComponent('loader', {
-//  init: function () {
-//    var scene = this.el;
-//    scene.addEventListener('loaded', function () {
-//      document.querySelector(".spinner").style.display = "none";
-//      console.log("loaded");
-//    });
-//  }
-//});
+AFRAME.registerComponent('loader', {
+  init: function () {
+    var scene = this.el;
+    scene.addEventListener('loaded', function () {
+      document.querySelector(".spinner").style.display = "none";
+      console.log("loaded");
+    });
+  }
+});

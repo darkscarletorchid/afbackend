@@ -1,7 +1,7 @@
 # This file uses centimeters as units for non-parametric coordinates.
 
 mtllib Fork.mtl
-g default
+g default1
 v -1.124442 1.124536 0.100095
 v -1.124438 1.122380 0.053527
 v -1.124306 1.128254 0.053641
@@ -13466,7 +13466,7 @@ vn 0.000000 0.000000 0.000000
 vn 0.000000 0.000000 0.000000
 vn 0.000000 0.000000 0.000000
 s off
-g polySurface5 Fork_4
+g Fork_4 polySurface5 polySurface1
 usemtl phong13SG
 f 132//1 128//2 137//3
 f 137//4 128//5 124//6

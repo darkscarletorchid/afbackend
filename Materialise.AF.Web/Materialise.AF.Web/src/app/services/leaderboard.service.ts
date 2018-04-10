@@ -11,7 +11,7 @@ export class LeaderboardService {
 
   constructor(private http: HttpClient, ) { }
 
-  private apiPath: string = environment.apiEndpoint + '/user';
+  private apiPath: string = `${environment.apiEndpoint}/user`;
 
   getTopUser(): Observable<LeaderboardItem[]> {
     return this.http.get<any>(this.apiPath).map(data => {
