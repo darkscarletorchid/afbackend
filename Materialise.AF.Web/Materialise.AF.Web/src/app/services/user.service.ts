@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/map';
 
 import { environment } from '../../environments/environment';
 
 import { User } from '../models/user';
-import { LeaderboardItem } from '../models/leaderboard-item';
 
 @Injectable()
 export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  private apiPath: string = environment.apiEndpoint + '/user';
+  private apiPath = `${environment.apiEndpoint}/user`;
 
   getCurrentUserToken(): string {
     return localStorage.getItem('token');

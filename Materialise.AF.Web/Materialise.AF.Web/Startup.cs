@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Materialise.AF.Web.Middleware;
 using Materialise.AF.Web.Models;
 using Microsoft.AspNetCore.Builder;

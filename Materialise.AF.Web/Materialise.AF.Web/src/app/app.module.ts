@@ -60,10 +60,10 @@ import { UserService } from './services/user.service';
 import { LeaderboardService } from './services/leaderboard.service';
 
 const appRoutes: Routes = [
-  { path: '', component: RegisterComponent },
+  { path: '', redirectTo: '/register', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
   { path: 'quest', component: CameraArComponent, canActivate: [CanActivateAuthGuard] },
-  { path: 'leaderboard', component: LeaderboardComponent },
+  { path: 'leaderboard', component: LeaderboardComponent }
 ];
 
 @NgModule({
@@ -111,11 +111,11 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    RouterModule.forRoot(appRoutes),
 
     // material design modules
     MatNativeDateModule,
@@ -150,7 +150,7 @@ const appRoutes: Routes = [
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule,
+    MatTooltipModule
     //bootstrap
     //ModalModule
 

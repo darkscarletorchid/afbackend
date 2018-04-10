@@ -118,6 +118,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+//import { ModalModule } from 'ngx-bootstrap';
+//import * as $ from 'jquery';
 // Material Design Components
 
 
@@ -134,10 +136,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var appRoutes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_13__components_register_register_component__["a" /* RegisterComponent */] },
+    { path: '', redirectTo: '/register', pathMatch: 'full' },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_13__components_register_register_component__["a" /* RegisterComponent */] },
     { path: 'quest', component: __WEBPACK_IMPORTED_MODULE_10__components_camera_ar_camera_ar_component__["a" /* CameraArComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_14__services_canActivateAuthGuard_service__["a" /* CanActivateAuthGuard */]] },
-    { path: 'leaderboard', component: __WEBPACK_IMPORTED_MODULE_11__components_leaderboard_leaderboard_component__["a" /* LeaderboardComponent */] },
+    { path: 'leaderboard', component: __WEBPACK_IMPORTED_MODULE_11__components_leaderboard_leaderboard_component__["a" /* LeaderboardComponent */] }
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -188,11 +190,11 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* RouterModule */].forRoot(appRoutes),
                 __WEBPACK_IMPORTED_MODULE_5__angular_forms__["c" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_forms__["h" /* ReactiveFormsModule */],
                 __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* RouterModule */].forRoot(appRoutes),
                 // material design modules
                 __WEBPACK_IMPORTED_MODULE_8__angular_material__["p" /* MatNativeDateModule */],
                 __WEBPACK_IMPORTED_MODULE_8__angular_material__["a" /* MatAutocompleteModule */],
@@ -227,6 +229,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_8__angular_material__["E" /* MatTabsModule */],
                 __WEBPACK_IMPORTED_MODULE_8__angular_material__["F" /* MatToolbarModule */],
                 __WEBPACK_IMPORTED_MODULE_8__angular_material__["G" /* MatTooltipModule */]
+                //bootstrap
+                //ModalModule
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_15__services_auth_service__["a" /* AuthService */],
@@ -249,14 +253,14 @@ var AppModule = /** @class */ (function () {
 /***/ "./src/app/components/camera-ar/camera-ar.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".result-circle {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n}\r\n"
+module.exports = ".result-circle {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 10;\r\n}\r\n\r\n.spinner {\r\n  /*margin: 50% auto 0;*/\r\n  width: 70px;\r\n  text-align: center;\r\n  position: fixed;\r\n  top: 50%;\r\n  left: 50%;\r\n}\r\n\r\n.spinner > div {\r\n    width: 18px;\r\n    height: 18px;\r\n    background-color: #FFF;\r\n    border-radius: 100%;\r\n    display: inline-block;\r\n    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\r\n    animation: sk-bouncedelay 1.4s infinite ease-in-out both;\r\n  }\r\n\r\n.spinner .bounce1 {\r\n    -webkit-animation-delay: -0.32s;\r\n    animation-delay: -0.32s;\r\n  }\r\n\r\n.spinner .bounce2 {\r\n    -webkit-animation-delay: -0.16s;\r\n    animation-delay: -0.16s;\r\n  }\r\n\r\n@-webkit-keyframes sk-bouncedelay {\r\n  0%, 80%, 100% {\r\n    -webkit-transform: scale(0)\r\n  }\r\n\r\n  40% {\r\n    -webkit-transform: scale(1.0)\r\n  }\r\n}\r\n\r\n@keyframes sk-bouncedelay {\r\n  0%, 80%, 100% {\r\n    -webkit-transform: scale(0);\r\n    transform: scale(0);\r\n  }\r\n\r\n  40% {\r\n    -webkit-transform: scale(1.0);\r\n    transform: scale(1.0);\r\n  }\r\n}\r\n\r\n\r\n"
 
 /***/ }),
 
 /***/ "./src/app/components/camera-ar/camera-ar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<svg width=\"500\" height=\"100\" class=\"result-circle\">\n  <g>\n  <circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"white\" stroke-width=\"4\" fill=\"#9C27B0\" />\n  <text x=\"22\" y=\"60\" font-family=\"Verdana\" font-size=\"25\" fill=\"white\">{{this.actualCount}}</text>\n  <text x=\"38\" y=\"60\" font-family=\"Verdana\" font-size=\"25\" fill=\"white\">/11</text>\n  <text x=\"95\" y=\"57\" font-family=\"Verdana\" font-size=\"20\" fill=\"#9C27B0\">models found</text>\n  <line x1=\"90\" y1=\"60\" x2=\"230\" y2=\"60\" style=\"stroke:white;stroke-width:1\" />\n  </g>\n</svg>\n\n<a-scene embedded arjs=\"debugUIEnabled: false; sourceType: webcam; trackingMethod: best; detectionMode: mono_and_matrix; matrixCodeType: 3x3;\">\r\n  <a-assets>\r\n    <a-asset-item id=\"m-obj\" src=\"https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGlasses.obj?1522846713284\"></a-asset-item>\r\n    <a-asset-item id=\"m-mtl\" src=\"https://cdn.glitch.com/440f72c5-f93c-4860-a34d-5e8cc9bf82d7%2FGlasses.mtl?1522846697183\"></a-asset-item>\r\n    <a-asset-item id=\"a1-obj\" src=\"assets/models/GoldStar.obj\"></a-asset-item>\r\n    <a-asset-item id=\"a1-mtl\" src=\"assets/models/GoldStar.obj\"></a-asset-item>\r\n    <a-asset-item id=\"t-obj\" src=\"assets/models/Car.obj\"></a-asset-item>\r\n    <a-asset-item id=\"t-mtl\" src=\"assets/models/Car.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"e1-obj\" src=\"assets/models/Krab.obj\"></a-asset-item>\r\n    <a-asset-item id=\"e1-mtl\" src=\"assets/models/Krab.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"r-obj\" src=\"assets/models/Ring.obj\"></a-asset-item>\r\n    <a-asset-item id=\"r-mtl\" src=\"assets/models/Ring.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"i1-obj\" src=\"assets/models/Toy.obj\"></a-asset-item>\r\n    <a-asset-item id=\"i1-mtl\" src=\"assets/models/Toy.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"a2-obj\" src=\"assets/models/VioletStar.obj\"></a-asset-item>\r\n    <a-asset-item id=\"a2-mtl\" src=\"assets/models/VioletStar.mtl\"></a-asset-item>\r\n    <!--<a-asset-item id=\"l-obj\" src=\"assets/models/\"></a-asset-item>\r\n    <a-asset-item id=\"l-mtl\" src=\"assets/models/\"></a-asset-item>\r\n    <a-asset-item id=\"i2-obj\" src=\"assets/models/\"></a-asset-item>\r\n    <a-asset-item id=\"i2-mtl\" src=\"assets/models/\"></a-asset-item>\r\n    <a-asset-item id=\"s-obj\" src=\"assets/models/\"></a-asset-item>\r\n    <a-asset-item id=\"s-mtl\" src=\"assets/models/\"></a-asset-item>\r\n    <a-asset-item id=\"e2-obj\" src=\"assets/models/\"></a-asset-item>\r\n    <a-asset-item id=\"e2-mtl\" src=\"assets/models/\"></a-asset-item>-->\r\n  </a-assets>\r\n\r\n  <!--TODO add animations for all models-->\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/M.patt\" id=\"letter-m\" registerevents>\r\n    <!--   glasses -->\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"90 0 0\"\r\n              obj-model=\"obj: #m-obj; mtl: #m-mtl\">\r\n      <a-animation attribute=\"rotation\" direction=\"alternate\" from=\"90 -55 0\" to=\"90 55 0\" dur=\"2500\" easing=\"ease-sine\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker><a-marker preset=\"custom\" url=\"assets/markers/patterns/A1.patt\" id=\"letter-a1\" registerevents>\r\n    <!--     goldstar -->\r\n    <a-entity id=\"model\"\r\n              position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"90 0 0\"\r\n              obj-model=\"obj: #a1-obj; mtl: #a1-mtl\">\r\n      <a-animation attribute=\"scale\" from=\"1 1 1\" to=\"1.5 1.5 1.5\" direction=\"alternate\" dur=\"1000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/T.patt\" id=\"letter-t\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #t-obj; mtl: #t-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/E1.patt\" id=\"letter-e1\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #e1-obj; mtl: #e1-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/R.patt\" id=\"letter-r\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #r-obj; mtl: #r-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/I1.patt\" id=\"letter-i1\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #i1-obj; mtl: #i1-mtl\">\r\n\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/A2.patt\" id=\"letter-a2\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #a2-obj; mtl: #a2-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/L.patt\" id=\"letter-l\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #l-obj; mtl: #l-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/I2.patt\" id=\"letter-i2\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #i2-obj; mtl: #i2-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/S.patt\" id=\"letter-s\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #s-obj; mtl: #s-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/E2.patt\" id=\"letter-e2\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #e2-obj; mtl: #e2-mtl\">\r\n      <a-animation attribute=\"rotation\" to=\"0 360 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-entity camera position=\"0 0 5\"></a-entity>\r\n</a-scene>\n"
+module.exports = "<div class=\"spinner\">\r\n  <div class=\"bounce1\"></div>\r\n  <div class=\"bounce2\"></div>\r\n  <div class=\"bounce3\"></div>\r\n</div>\r\n<svg width=\"500\" height=\"100\" class=\"result-circle\">\r\n  <g>\r\n  <circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"white\" stroke-width=\"4\" fill=\"#9C27B0\" />\r\n  <text x=\"21\" y=\"60\" font-family=\"Verdana\" font-size=\"20\" fill=\"white\">{{this.actualCount}}</text>\r\n  <text x=\"46\" y=\"60\" font-family=\"Verdana\" font-size=\"20\" fill=\"white\">/11</text>\r\n  <text x=\"95\" y=\"57\" font-family=\"Verdana\" font-size=\"20\" fill=\"#9C27B0\">models found</text>\r\n  <line x1=\"90\" y1=\"60\" x2=\"230\" y2=\"60\" style=\"stroke:white;stroke-width:1\" />\r\n  </g>\r\n</svg>\r\n<a-scene class=\"scene-index\" embedded arjs=\"debugUIEnabled: false; sourceType: webcam; trackingMethod: best; detectionMode: mono_and_matrix; matrixCodeType: 3x3;\">\r\n  <a-assets>\r\n    <a-asset-item id=\"m-obj\" src=\"assets/models/Glasses2.obj\"></a-asset-item>\r\n    <a-asset-item id=\"m-mtl\" src=\"assets/models/Glasses2.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"a1-obj\" src=\"assets/models/GoldStar.obj\"></a-asset-item>\r\n    <a-asset-item id=\"a1-mtl\" src=\"assets/models/GoldStar.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"t-obj\" src=\"assets/models/Car2.obj\"></a-asset-item>\r\n    <a-asset-item id=\"t-mtl\" src=\"assets/models/Car2.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"e1-obj\" src=\"assets/models/Frisbee.obj\"></a-asset-item>\r\n    <a-asset-item id=\"e1-mtl\" src=\"assets/models/Frisbee.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"r-obj\" src=\"assets/models/Cat.obj\"></a-asset-item> <!--probably replace with lighter-->\r\n    <a-asset-item id=\"r-mtl\" src=\"assets/models/Cat.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"i1-obj\" src=\"assets/models/Cardboard.obj\"></a-asset-item>\r\n    <a-asset-item id=\"i1-mtl\" src=\"assets/models/Cardboard.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"a2-obj\" src=\"assets/models/King.obj\"></a-asset-item>\r\n    <a-asset-item id=\"a2-mtl\" src=\"assets/models/King.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"l-obj\" src=\"assets/models/SoapHolder.obj\"></a-asset-item>\r\n    <a-asset-item id=\"l-mtl\" src=\"assets/models/SoapHolder.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"i2-obj\" src=\"assets/models/PencilHolder.obj\"></a-asset-item>\r\n    <a-asset-item id=\"i2-mtl\" src=\"assets/models/PencilHolder.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"s-obj\" src=\"assets/models/Ring2.obj\"></a-asset-item>\r\n    <a-asset-item id=\"s-mtl\" src=\"assets/models/Ring2.mtl\"></a-asset-item>\r\n    <a-asset-item id=\"e2-obj\" src=\"assets/models/Fork.obj\"></a-asset-item>\r\n    <a-asset-item id=\"e2-mtl\" src=\"assets/models/Fork.obj\"></a-asset-item>\r\n  </a-assets>\r\n\r\n  <!--TODO add animations for all models-->\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/M.patt\" id=\"letter-m\" title=\"glasses\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 0 0\"\r\n              obj-model=\"obj: #m-obj; mtl: #m-mtl\">\r\n      <a-animation attribute=\"rotation\" direction=\"alternate\" from=\"75 -90 90\" to=\"105 -90 90\" dur=\"2500\" easing=\"ease-sine\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/A1.patt\" id=\"letter-a1\" title=\"a golden star\" registerevents>\r\n    <a-entity id=\"model\"\r\n              position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 0 0\"\r\n              obj-model=\"obj: #a1-obj; mtl: #a1-mtl\">\r\n      <a-animation attribute=\"scale\" from=\"1 1 1\" to=\"1.5 1.5 1.5\" direction=\"alternate\" dur=\"1000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/T.patt\" id=\"letter-t\" title=\"a car\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"0.8 0.8 0.8\"\r\n              rotation=\"0 90 -90\"\r\n              obj-model=\"obj: #t-obj; mtl: #t-mtl\">\r\n      <a-animation attribute=\"position\" from=\"2 0 0\" to=\"-2 0 0\" dur=\"5000\" direction=\"alternate\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/E1.patt\" id=\"letter-e1\" title=\"a frisbee\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 0 0\"\r\n              obj-model=\"obj: #e1-obj; mtl: #e1-mtl\">\r\n      <a-animation attribute=\"rotation\" from=\"0 0 0\" to=\"0 360 0\" dur=\"5000\" direction=\"\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/R.patt\" id=\"letter-r\" title=\"a toy cat\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"0.8 0.8 0.8\"\r\n              rotation=\"90 0 0\"\r\n              obj-model=\"obj: #r-obj; mtl: #r-mtl\">\r\n      <a-animation attribute=\"position\" from=\"2 0 0\" to=\"-2 0 0\" dur=\"5000\" direction=\"alternate\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/I1.patt\" id=\"letter-i1\" title=\"a cardboard headset\" registerevents>\r\n    <a-entity position=\"0 0 -1\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 0 0\"\r\n              obj-model=\"obj: #i1-obj; mtl: #i1-mtl\">\r\n      <!--<a-animation attribute=\"rotation\" from=\"0 0 0\" to=\"0 0 0\" dur=\"5000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>-->\r\n    </a-entity> \r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/A2.patt\" id=\"letter-a2\" title=\"a chess king\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"0.9 0.9 0.9\"\r\n              rotation=\"-90 0 0\"\r\n              obj-model=\"obj: #a2-obj; mtl: #a2-mtl\">\r\n      <a-animation attribute=\"position\" from=\"-3 0 0\" to=\"3 0 0\" dur=\"5000\" direction=\"alternate\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/L.patt\" id=\"letter-l\" title=\"a soap holder\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"0 0 10\"\r\n              obj-model=\"obj: #l-obj; mtl: #l-mtl\">\r\n      <a-animation attribute=\"scale\" from=\"1 1 1\" to=\"1.2 1.2 1.2\" direction=\"alternate\" dur=\"1000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/I2.patt\" id=\"letter-i2\" title=\"a pencil holder\" registerevents>\r\n    <a-entity position=\"0 -4 3\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"-90 0 0\"\r\n              obj-model=\"obj: #i2-obj; mtl: #i2-mtl\">\r\n    </a-entity>\r\n    <a-animation attribute=\"position\" from=\"-2 0 0\" to=\"2 0 0\" dur=\"5000\" direction=\"alternate\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/S.patt\" id=\"letter-s\" title=\"a ring\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"1 1 1\"\r\n              rotation=\"45 0 0\"\r\n              obj-model=\"obj: #s-obj; mtl: #s-mtl\">\r\n      <a-animation attribute=\"scale\" from=\"1 1 1\" to=\"1.5 1.5 1.5\" direction=\"alternate\" dur=\"1000\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-marker preset=\"custom\" url=\"assets/markers/patterns/E2.patt\" id=\"letter-e2\" title=\"a fork\" registerevents>\r\n    <a-entity position=\"0 0 0\"\r\n              scale=\"2.5 2.5 2.5\"\r\n              rotation=\"0 180 0\"\r\n              obj-model=\"obj: #e2-obj; mtl: #e2-mtl\">\r\n      <a-animation attribute=\"rotation\" from=\"25 180 0\" to=\"-25 180 0\" direction=\"alternate\" dur=\"2500\" easing=\"linear\" repeat=\"indefinite\"></a-animation>\r\n    </a-entity>\r\n  </a-marker>\r\n  <a-entity camera position=\"0 0 15\"></a-entity>\r\n</a-scene>\r\n"
 
 /***/ }),
 
@@ -289,6 +293,7 @@ var CameraArComponent = /** @class */ (function () {
         this.progressService = progressService;
         this.userService = userService;
         this.snackBar = snackBar;
+        this.actualCount = '00';
         this.userItem = new __WEBPACK_IMPORTED_MODULE_1__models_item__["a" /* UserItem */]();
         this.loading = false;
     }
@@ -299,23 +304,33 @@ var CameraArComponent = /** @class */ (function () {
     CameraArComponent.prototype.onMarkerFound = function (target) {
         var _this = this;
         this.userItem.marker = target.id;
+        this.title = target.title;
         this.userItem.token = this.userService.getCurrentUserToken();
         this.progressService.addToProgress(this.userItem)
             .subscribe(function (result) { return _this.progressService.getProgressByUser(_this.user.id)
             .subscribe(function (data) {
             _this.itemsFound = data.markers;
-            _this.actualCount = data.markers.length;
+            var prevCount = _this.actualCount;
+            _this.actualCount = data.markers.length.toString();
+            if (data.markers.length < 10) {
+                _this.actualCount = '0' + _this.actualCount;
+            }
             _this.progress = data.progress;
-            _this.snackBar.open('New object found!', '', { duration: 3000, panelClass: 'custom-snackbar' });
+            if (_this.actualCount !== prevCount) {
+                var output = 'You found ' + _this.title + '!';
+                _this.snackBar.open(output, '', { duration: 3000, panelClass: 'custom-snackbar' });
+            }
         }); });
     };
     CameraArComponent.prototype.getProgressByUser = function (id) {
         var _this = this;
         this.progressService.getProgressByUser(id)
             .subscribe(function (data) {
-            console.log(data);
             _this.itemsFound = data.markers;
-            _this.actualCount = data.markers.length;
+            _this.actualCount = data.markers.length.toString();
+            if (data.markers.length < 10) {
+                _this.actualCount = '0' + _this.actualCount;
+            }
         }, function (error) { });
     };
     __decorate([
@@ -435,9 +450,8 @@ var LeaderboardComponent = /** @class */ (function () {
         this.lastUpdated = new Date();
         __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_TimerObservable__["a" /* TimerObservable */].create(0, this.interval).subscribe(function () {
             _this.leaderboardService.getTopUser().subscribe(function (data) {
-                console.log(data);
                 _this.leaders = data;
-            }, function (error) {
+            }, function () {
                 console.log("error occured");
             });
             _this.lastUpdated = new Date(Date.now());
@@ -596,26 +610,15 @@ var UserDto = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
 
 var AuthService = /** @class */ (function () {
-    function AuthService(http) {
-        this.http = http;
-        this.apiPath = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiEndpoint + '/users/authenticate';
+    function AuthService() {
     }
     AuthService.prototype.logout = function () {
         localStorage.removeItem('token');
@@ -629,8 +632,7 @@ var AuthService = /** @class */ (function () {
         return false;
     };
     AuthService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Injectable */])()
     ], AuthService);
     return AuthService;
 }());
@@ -705,7 +707,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var LeaderboardService = /** @class */ (function () {
     function LeaderboardService(http) {
         this.http = http;
-        this.apiPath = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiEndpoint + '/user';
+        this.apiPath = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiEndpoint + "/user";
     }
     LeaderboardService.prototype.getTopUser = function () {
         return this.http.get(this.apiPath).map(function (data) {
@@ -764,13 +766,12 @@ var ProgressService = /** @class */ (function () {
         this.httpClient = httpClient;
     }
     ProgressService.prototype.getProgressByUser = function (id) {
-        return this.httpClient.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiEndpoint + '/user/' + id).map(function (data) {
-            console.log(data);
+        return this.httpClient.get(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiEndpoint + "/user/" + id).map(function (data) {
             return data;
         });
     };
     ProgressService.prototype.addToProgress = function (userItem) {
-        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiEndpoint + '/markers', userItem, httpOptions);
+        return this.httpClient.post(__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiEndpoint + "/markers", userItem, httpOptions);
     };
     ProgressService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Injectable */])(),
@@ -790,7 +791,8 @@ var ProgressService = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -802,11 +804,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+//import { Observable } from 'rxjs/Observable';
+
 
 var UserService = /** @class */ (function () {
     function UserService(http) {
         this.http = http;
-        this.apiPath = __WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].apiEndpoint + '/user';
+        this.apiPath = __WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].apiEndpoint + "/user";
     }
     UserService.prototype.getCurrentUserToken = function () {
         return localStorage.getItem('token');
@@ -842,8 +846,12 @@ var UserService = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
+// The file contents for the current environment will overwrite these during build.
+// The build system defaults to the dev environment which uses `environment.ts`, but if you do
+// `ng build --env=prod` then `environment.prod.ts` will be used instead.
+// The list of which env maps to which file can be found in `.angular-cli.json`.
 var environment = {
-    production: true,
+    production: false,
     apiEndpoint: "api"
 };
 
@@ -881,3 +889,4 @@ module.exports = __webpack_require__("./src/main.ts");
 /***/ })
 
 },[0]);
+//# sourceMappingURL=main.bundle.js.map
