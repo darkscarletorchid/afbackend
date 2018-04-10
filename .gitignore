@@ -1,7 +1,7 @@
 #ignore thumbnails created by windows
 **/Thumbs.db
 #Ignore files build by Visual Studio
-Materialise.AF.Web/**/*.user
+**/*.user
 **/*.aps
 **/*.pch
 **/*.vspscc
@@ -18,10 +18,10 @@ Materialise.AF.Web/**/*.user
 **/*.sbr
 **/[Rr]elease*/
 **/_ReSharper*/
-Materialise.AF.Web/**/bin/
-Materialise.AF.Web/**/obj/
+**/bin/
+**/obj/
 **/node_modules/
-Materialise.AF.Web/**/.vs/
+**/.vs/
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
