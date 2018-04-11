@@ -29,20 +29,18 @@ namespace Materialise.AF.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var userMarkers = _dataContext.UserMarkers
-                .Include(q => q.User)
-                .Include(q => q.Marker)
-                .ThenInclude(q => q.UserMarkers)
-                .Where(q => q.User.IsActive)
-                .GroupBy(q => q.User)
+            var userMarkers = _dataContext.Users
+                .Include(q => q.UserMarkers)
+                .ThenInclude(q => q.Marker )
+                .Where(q => q.IsActive)
                 .ToList();
 
             var markerResponse = userMarkers.Select(q => new MarkerResponse
             {
-                UserId = q.Key.Id,
-                UserName = $"{q.Key.FirstName} {q.Key.LastName}",
-                Progress = CalculateProgress(q.Key.RegistrationDate, q.Select(mk => mk.DateTime).ToList()),
-                Markers = q.Select(m => new MarkerModel
+                UserId = q.Id,
+                UserName = $"{q.FirstName} {q.LastName}",
+                Progress = CalculateProgress(q.RegistrationDate, q.UserMarkers.Select(mk => mk.DateTime).ToList()),
+                Markers = q.UserMarkers.Select(m => new MarkerModel
                 {
                     MarkerId = m.Marker.Key,
                     Letter = m.Marker.Value,
