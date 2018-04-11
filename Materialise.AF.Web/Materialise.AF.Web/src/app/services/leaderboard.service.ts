@@ -20,7 +20,7 @@ export class LeaderboardService {
                     return {
                         no: i + 1,
                         userName: user.userName,
-                        progress: user.progress,
+                        progress: user.progress.slice(0, user.progress.lastIndexOf('.')),
                         itemsFound: user.markers.length
                     }
                 });
