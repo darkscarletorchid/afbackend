@@ -9,7 +9,7 @@ import { LeaderboardItem } from '../models/leaderboard-item';
 @Injectable()
 export class LeaderboardService {
 
-    constructor(private http: HttpClient, ) { }
+    constructor(private http: HttpClient ) { }
 
     private apiPath: string = `${environment.apiEndpoint}/user`;
 

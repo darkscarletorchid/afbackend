@@ -48,7 +48,7 @@ namespace Materialise.AF.Web.Controllers
                     Letter = m.Marker.Value,
                     Timestamp = m.DateTime
                 })
-            }).OrderBy(q => q.Progress);
+            }).OrderByDescending(q => q.Markers.Count()).ThenBy(q => q.Progress);
 
             return Ok(markerResponse);
         }
@@ -142,7 +142,8 @@ namespace Materialise.AF.Web.Controllers
 
             var lastDate = markerDate.OrderByDescending(q => q.Ticks).FirstOrDefault();
 
-            return lastDate - registrationDate;
+            var res = lastDate - registrationDate;
+            return res;
         }
     }
 }
