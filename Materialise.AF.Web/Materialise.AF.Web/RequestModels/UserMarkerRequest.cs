@@ -1,8 +1,8 @@
-﻿namespace Materialise.AF.Web.RequestModels
+namespace Materialise.AF.Web.RequestModels
 {
-	public class UserMarkerRequest
-	{
-		public string Token { get; set; }
-		public string Marker { get; set; }
-	}
+    public class UserMarkerRequest
+    {
+        public string Token { get; set; }
+        public string Marker { get; set; }
+    }
 }

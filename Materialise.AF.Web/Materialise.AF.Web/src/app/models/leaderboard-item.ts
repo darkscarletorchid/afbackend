@@ -12,14 +12,14 @@
 // }
 
 export class LeaderboardItem {
-  no: number;
-  userName: string;
-  progress: string;
-  itemsFound: number;
+    no: number;
+    userName: string;
+    progress: string;
+    itemsFound: number;
 }
 
 class UserMarker {
-  markerId: string;
-  letter: string;
-  timestamp: string;
+    markerId: string;
+    letter: string;
+    timestamp: string;
 }

@@ -5,13 +5,13 @@
     justify-content: center;
 }
 
-.register-form > * {
-    margin: 2% 10% 0% 10%;
-}
+    .register-form > * {
+        margin: 2% 10% 0% 10%;
+    }
 
 .form-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 80vh;
-} 
+}

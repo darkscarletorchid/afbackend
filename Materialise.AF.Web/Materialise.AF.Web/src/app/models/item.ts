@@ -1,9 +1,9 @@
 export class ItemProgress {
-  markers: string[];
-  progress: string;
+    markers: string[];
+    progress: string;
 }
 
 export class UserItem {
-  token: string;
-  marker: string;
+    token: string;
+    marker: string;
 }
