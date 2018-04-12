@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
@@ -15,5 +16,17 @@ export class AuthService {
         }
 
         return false;
+    }
+    getAuthorizationHeaders(): Object {
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+        });
+        const authHeaders = headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
+
+        const httpOptions = {
+            headers: authHeaders
+        };
+        
+        return httpOptions;
     }
 }

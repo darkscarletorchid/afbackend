@@ -19,3 +19,11 @@ video {
 .scene-index {
   z-index: 5;
 }
+
+.mat-cell {
+    font-size: 18px !important;
+}
+
+.mat-header-cell {
+    font-size: 18px !important;
+}

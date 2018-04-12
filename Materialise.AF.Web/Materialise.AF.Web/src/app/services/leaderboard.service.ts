@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { AuthService } from './auth.service';
 
 import { environment } from '../../environments/environment';
 import { LeaderboardItem } from '../models/leaderboard-item';
 
-
 @Injectable()
 export class LeaderboardService {
 
-    constructor(private http: HttpClient ) { }
+    constructor(private http: HttpClient, private authService: AuthService ) { }
 
     private apiPath: string = `${environment.apiEndpoint}/user`;
 
     getTopUser(): Observable<LeaderboardItem[]> {
-        return this.http.get<any>(this.apiPath).map(data => {
+        const httpOptions = this.authService.getAuthorizationHeaders();
+        return this.http.get<any>(this.apiPath, httpOptions).map(data => {
             var leaders =
                 data.map((user, i) => {
                     return {
