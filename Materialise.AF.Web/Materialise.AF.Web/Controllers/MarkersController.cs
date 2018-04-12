@@ -1,5 +1,7 @@
 using System;
 using System.Linq;
+using System.Security;
+using System.Security.Claims;
 using Materialise.AF.Web.Models;
 using Materialise.AF.Web.RequestModels;
 using Microsoft.AspNetCore.Authorization;
@@ -37,6 +39,14 @@ namespace Materialise.AF.Web.Controllers
             var marker = _dataContext.Markers.FirstOrDefault(q => q.Key == request.Marker);
             if (marker == null)
                 throw new Exception("Marker does not exist");
+
+            var claim = HttpContext.User?.Claims.FirstOrDefault(q => q.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (!string.IsNullOrEmpty(claim))
+            {
+                var requestedUser = _dataContext.Users.FirstOrDefault(q => q.Token == request.Token);
+                if (requestedUser == null || requestedUser.Email != claim)
+                    throw new SecurityException("Operation is not permitted.");
+            }
 
             var userMarker = new UserMarker
             {
