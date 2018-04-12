@@ -26,6 +26,7 @@ namespace Materialise.AF.Web.Controllers
             return Ok(markers);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Index([FromBody] UserMarkerRequest request)
         {

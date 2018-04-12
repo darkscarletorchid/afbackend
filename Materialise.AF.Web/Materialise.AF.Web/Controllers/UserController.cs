@@ -83,7 +83,6 @@ namespace Materialise.AF.Web.Controllers
             return Ok(markerResponse);
         }
 
-        [Authorize]
         [HttpPost]
         public IActionResult Index([FromBody] UserRequest userRequest)
         {
@@ -125,8 +124,11 @@ namespace Materialise.AF.Web.Controllers
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenSettings.Key));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            var token = new JwtSecurityToken(_tokenSettings.Issuer, _tokenSettings.Audience, claims,
-                expires: DateTime.MaxValue, signingCredentials: creds);
+            var token = new JwtSecurityToken(_tokenSettings.Issuer,
+                _tokenSettings.Audience,
+                claims,
+                expires: DateTime.Now.AddDays(2),
+                signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
