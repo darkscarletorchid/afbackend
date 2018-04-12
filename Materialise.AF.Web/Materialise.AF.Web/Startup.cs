@@ -83,9 +83,12 @@ namespace Materialise.AF.Web
 
             app.UseAuthentication();
 
-            app.UseSwagger();
+            if (env.IsDevelopment())
+            {
+                app.UseSwagger();
 
-            app.UseSwaggerUI(setupAction => setupAction.SwaggerEndpoint("v1/swagger.json", "V1 Docs"));
+                app.UseSwaggerUI(setupAction => setupAction.SwaggerEndpoint("v1/swagger.json", "V1 Docs"));
+            }
 
             app.UseStaticFiles();
 

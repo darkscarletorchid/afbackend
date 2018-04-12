@@ -9,7 +9,7 @@ import { LeaderboardItem } from '../models/leaderboard-item';
 @Injectable()
 export class LeaderboardService {
 
-    constructor(private http: HttpClient, private authService: AuthService ) { }
+    constructor(private http: HttpClient, private authService: AuthService) { }
 
     private apiPath: string = `${environment.apiEndpoint}/user`;
 
@@ -18,15 +18,25 @@ export class LeaderboardService {
         return this.http.get<any>(this.apiPath, httpOptions).map(data => {
             var leaders =
                 data.map((user, i) => {
+
+
                     return {
                         no: i + 1,
                         userName: user.userName,
-                        progress: user.progress.slice(0, user.progress.lastIndexOf('.')),
+                        progress: this.formatProgress(user.progress),
                         itemsFound: user.markers.length
                     }
                 });
             return leaders;
         });
     };
+
+    private formatProgress(progress: string): string {
+        const index = progress.lastIndexOf('.');
+        if (index === -1)
+            return progress;
+
+        return progress.slice(0, index);
+    }
 
 }
