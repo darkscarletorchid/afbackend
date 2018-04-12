@@ -7,6 +7,7 @@ using System.Text;
 using Materialise.AF.Web.Models;
 using Materialise.AF.Web.RequestModels;
 using Materialise.AF.Web.ResponseModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -26,6 +27,7 @@ namespace Materialise.AF.Web.Controllers
             _dataContext = dataContext;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Index()
         {
@@ -51,6 +53,7 @@ namespace Materialise.AF.Web.Controllers
             return Ok(markerResponse);
         }
 
+        [Authorize]
         [HttpGet]
         [Route("{id:int}")]
         public IActionResult Index(int id)
@@ -80,6 +83,7 @@ namespace Materialise.AF.Web.Controllers
             return Ok(markerResponse);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Index([FromBody] UserRequest userRequest)
         {

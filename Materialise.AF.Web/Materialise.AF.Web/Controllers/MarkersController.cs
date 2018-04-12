@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Materialise.AF.Web.Models;
 using Materialise.AF.Web.RequestModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Materialise.AF.Web.Controllers
@@ -16,6 +17,7 @@ namespace Materialise.AF.Web.Controllers
             _dataContext = dataContext;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Index()
         {
@@ -51,6 +53,7 @@ namespace Materialise.AF.Web.Controllers
             {
 
             }
+
             return Ok();
         }
     }

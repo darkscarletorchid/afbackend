@@ -1,10 +1,13 @@
+using System.Text;
 using Materialise.AF.Web.Middleware;
 using Materialise.AF.Web.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Materialise.AF.Web
@@ -20,6 +23,21 @@ namespace Materialise.AF.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = Configuration["TokenSettings:Issuer"],
+                        ValidAudience = Configuration["TokenSettings:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["TokenSettings:Key"]))
+                    };
+                });
+
             services.AddMvc();
 
             services.AddSwaggerGen(options =>
@@ -62,6 +80,8 @@ namespace Materialise.AF.Web
                 ServeUnknownFileTypes = true,
                 DefaultContentType = "text/plain"
             });
+
+            app.UseAuthentication();
 
             app.UseSwagger();
 
