@@ -19,3 +19,7 @@ video {
 .scene-index {
   z-index: 5;
 }
+
+.mat-cell {
+    font-size: 24px !important;
+}
