@@ -18,8 +18,6 @@ export class LeaderboardService {
         return this.http.get<any>(this.apiPath, httpOptions).map(data => {
             var leaders =
                 data.map((user, i) => {
-
-
                     return {
                         no: i + 1,
                         userName: user.userName,
