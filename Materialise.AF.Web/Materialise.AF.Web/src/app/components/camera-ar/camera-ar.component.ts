@@ -44,6 +44,11 @@ export class CameraArComponent implements OnInit {
                     if (this.actualCount !== prevCount) {
                         var output = 'You found ' + this.title + '!';
                         this.snackBar.open(output, '', { duration: 3000, panelClass: 'custom-snackbar' });
+                        if (this.actualCount === '11') {
+                            setTimeout(() => {
+                                this.snackBar.open("You found all models! Well done!", '', { duration: 3000, panelClass: 'custom-snackbar' });
+                            }, 3000);
+                        }
                     }
                 }));
     }
