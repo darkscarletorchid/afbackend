@@ -15,118 +15,165 @@
 </svg>
 <a-scene class="scene-index" embedded vr-mode-ui="enabled: false" arjs="debugUIEnabled: false; sourceType: webcam; trackingMethod: best; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
     <a-assets>
-        <a-asset-item id="m-obj" src="assets/models/Glasses2.obj"></a-asset-item>
-        <a-asset-item id="m-mtl" src="assets/models/Glasses2.mtl"></a-asset-item>
-        <a-asset-item id="a1-obj" src="assets/models/GoldStar.obj"></a-asset-item>
-        <a-asset-item id="a1-mtl" src="assets/models/GoldStar.mtl"></a-asset-item>
-        <a-asset-item id="t-obj" src="assets/models/Car2.obj"></a-asset-item>
-        <a-asset-item id="t-mtl" src="assets/models/Car2.mtl"></a-asset-item>
-        <a-asset-item id="e1-obj" src="assets/models/Frisbee.obj"></a-asset-item>
-        <a-asset-item id="e1-mtl" src="assets/models/Frisbee.mtl"></a-asset-item>
-        <a-asset-item id="r-obj" src="assets/models/Cat.obj"></a-asset-item> <!--probably replace with lighter-->
-        <a-asset-item id="r-mtl" src="assets/models/Cat.mtl"></a-asset-item>
-        <a-asset-item id="i1-obj" src="assets/models/Cardboard.obj"></a-asset-item>
-        <a-asset-item id="i1-mtl" src="assets/models/Cardboard.mtl"></a-asset-item>
-        <a-asset-item id="a2-obj" src="assets/models/King.obj"></a-asset-item>
-        <a-asset-item id="a2-mtl" src="assets/models/King.mtl"></a-asset-item>
-        <a-asset-item id="l-obj" src="assets/models/SoapHolder.obj"></a-asset-item>
-        <a-asset-item id="l-mtl" src="assets/models/SoapHolder.mtl"></a-asset-item>
-        <a-asset-item id="i2-obj" src="assets/models/PencilHolder.obj"></a-asset-item>
-        <a-asset-item id="i2-mtl" src="assets/models/PencilHolder.mtl"></a-asset-item>
-        <a-asset-item id="s-obj" src="assets/models/Ring2.obj"></a-asset-item>
-        <a-asset-item id="s-mtl" src="assets/models/Ring2.mtl"></a-asset-item>
-        <a-asset-item id="e2-obj" src="assets/models/Fork.obj"></a-asset-item>
-        <a-asset-item id="e2-mtl" src="assets/models/Fork.obj"></a-asset-item>
+        <!--animals-->
+        <a-asset-item id="penguin-obj" src="assets/models/Penguin.obj"></a-asset-item>
+        <a-asset-item id="penguin-mtl" src="assets/models/Penguin.mtl"></a-asset-item>
+        <a-asset-item id="crab-obj" src="assets/models/Crab.obj"></a-asset-item>
+        <a-asset-item id="crab-mtl" src="assets/models/Crab.mtl"></a-asset-item>
+        <a-asset-item id="fox-obj" src="assets/models/Fox.obj"></a-asset-item>
+        <a-asset-item id="fox-mtl" src="assets/models/Fox.mtl"></a-asset-item>
+        <a-asset-item id="lizard-obj" src="assets/models/Lizard.obj"></a-asset-item>
+        <a-asset-item id="lizard-mtl" src="assets/models/Lizard.mtl"></a-asset-item>
+        <a-asset-item id="pug-obj" src="assets/models/Pug.obj"></a-asset-item>
+        <a-asset-item id="pug-mtl" src="assets/models/Pug.mtl"></a-asset-item>
+
+        <!--robots-->
+        <a-asset-item id="robot1-obj" src="assets/models/Robot1.obj"></a-asset-item>
+        <a-asset-item id="robot1-mtl" src="assets/models/Robot1.mtl"></a-asset-item>
+        <a-asset-item id="robot2-obj" src="assets/models/Robot2.obj"></a-asset-item>
+        <a-asset-item id="robot2-mtl" src="assets/models/Robot2.mtl"></a-asset-item>
+        <a-asset-item id="robot3-obj" src="assets/models/Robot3.obj"></a-asset-item>
+        <a-asset-item id="robot3-mtl" src="assets/models/Robot3.mtl"></a-asset-item>
+        <a-asset-item id="robot4-obj" src="assets/models/Robot4.obj"></a-asset-item>
+        <a-asset-item id="robot4-mtl" src="assets/models/Robot4.mtl"></a-asset-item>
+        <a-asset-item id="robot5-obj" src="assets/models/Robot5.obj"></a-asset-item>
+        <a-asset-item id="robot5-mtl" src="assets/models/Robot5.mtl"></a-asset-item>
+
+        <!--characters-->
+        <a-asset-item id="night-king-obj" src="assets/models/NightKing.obj"></a-asset-item>
+        <a-asset-item id="night-king-mtl" src="assets/models/NightKing.mtl"></a-asset-item>
+        <a-asset-item id="r2d2-obj" src="assets/models/R2D2.obj"></a-asset-item>
+        <a-asset-item id="r2d2-mtl" src="assets/models/R2D2.mtl"></a-asset-item>
+        <a-asset-item id="rick-morty-obj" src="assets/models/RickAndMorty.obj"></a-asset-item>
+        <a-asset-item id="rick-morty-mtl" src="assets/models/RickAndMorty.mtl"></a-asset-item>
+        <a-asset-item id="robocop-obj" src="assets/models/Robocop.obj"></a-asset-item>
+        <a-asset-item id="robocop-mtl" src="assets/models/Robocop.mtl"></a-asset-item>
+        <a-asset-item id="sponge-bob-obj" src="assets/models/SpongeBob.obj"></a-asset-item>
+        <a-asset-item id="sponge-bob-mtl" src="assets/models/SpongeBob.mtl"></a-asset-item>
     </a-assets>
 
-    <!--TODO add animations for all models-->
-    <a-marker preset="custom" url="assets/markers/patterns/M.patt" id="letter-m" title="glasses" registerevents>
+    <!--animals-->
+    <a-marker preset="custom" url="assets/markers/patterns/M.patt" id="penguin" title="a penguin" registerevents>
         <a-entity position="0 0 0"
                   scale="1 1 1"
                   rotation="0 0 0"
-                  obj-model="obj: #m-obj; mtl: #m-mtl">
-            <a-animation attribute="rotation" direction="alternate" from="75 -90 90" to="105 -90 90" dur="2500" easing="ease-sine" repeat="indefinite"></a-animation>
+                  obj-model="obj: #penguin-obj; mtl: #penguin-mtl">
+            <!--<a-animation attribute="rotation" direction="alternate" from="75 -90 90" to="105 -90 90" dur="2500" easing="ease-sine" repeat="indefinite"></a-animation>-->
         </a-entity>
     </a-marker>
-    <a-marker preset="custom" url="assets/markers/patterns/A1.patt" id="letter-a1" title="a golden star" registerevents>
+    <a-marker preset="custom" url="assets/markers/patterns/A1.patt" id="crab" title="a crab" registerevents>
         <a-entity id="model"
                   position="0 0 0"
                   scale="1 1 1"
                   rotation="0 0 0"
-                  obj-model="obj: #a1-obj; mtl: #a1-mtl">
-            <a-animation attribute="scale" from="1 1 1" to="1.5 1.5 1.5" direction="alternate" dur="1000" easing="linear" repeat="indefinite"></a-animation>
+                  obj-model="obj: #crab-obj; mtl: #crab-mtl">
+            <!--<a-animation attribute="scale" from="1 1 1" to="1.5 1.5 1.5" direction="alternate" dur="1000" easing="linear" repeat="indefinite"></a-animation>-->
         </a-entity>
     </a-marker>
-    <a-marker preset="custom" url="assets/markers/patterns/T.patt" id="letter-t" title="a car" registerevents>
+    <a-marker preset="custom" url="assets/markers/patterns/T.patt" id="fox" title="a fox" registerevents>
         <a-entity position="0 0 0"
                   scale="0.8 0.8 0.8"
                   rotation="0 90 -90"
-                  obj-model="obj: #t-obj; mtl: #t-mtl">
-            <a-animation attribute="position" from="2 0 0" to="-2 0 0" dur="5000" direction="alternate" easing="linear" repeat="indefinite"></a-animation>
+                  obj-model="obj: #fox-obj; mtl: #fox-mtl">
+            <!--<a-animation attribute="position" from="2 0 0" to="-2 0 0" dur="5000" direction="alternate" easing="linear" repeat="indefinite"></a-animation>-->
         </a-entity>
     </a-marker>
-    <a-marker preset="custom" url="assets/markers/patterns/E1.patt" id="letter-e1" title="a frisbee" registerevents>
+    <a-marker preset="custom" url="assets/markers/patterns/E1.patt" id="lizard" title="a lizard" registerevents>
         <a-entity position="0 0 0"
                   scale="1 1 1"
                   rotation="0 0 0"
-                  obj-model="obj: #e1-obj; mtl: #e1-mtl">
-            <a-animation attribute="rotation" from="0 0 0" to="0 360 0" dur="5000" direction="" easing="linear" repeat="indefinite"></a-animation>
+                  obj-model="obj: #lizard-obj; mtl: #lizard-mtl">
+            <!--<a-animation attribute="rotation" from="0 0 0" to="0 360 0" dur="5000" direction="" easing="linear" repeat="indefinite"></a-animation>-->
         </a-entity>
     </a-marker>
-    <a-marker preset="custom" url="assets/markers/patterns/R.patt" id="letter-r" title="a toy cat" registerevents>
+    <a-marker preset="custom" url="assets/markers/patterns/R.patt" id="pug" title="a pug" registerevents>
         <a-entity position="0 0 0"
                   scale="0.8 0.8 0.8"
                   rotation="90 0 0"
-                  obj-model="obj: #r-obj; mtl: #r-mtl">
-            <a-animation attribute="position" from="2 0 0" to="-2 0 0" dur="5000" direction="alternate" easing="linear" repeat="indefinite"></a-animation>
+                  obj-model="obj: #pug-obj; mtl: #pug-mtl">
+            <!--<a-animation attribute="position" from="2 0 0" to="-2 0 0" dur="5000" direction="alternate" easing="linear" repeat="indefinite"></a-animation>-->
         </a-entity>
     </a-marker>
-    <a-marker preset="custom" url="assets/markers/patterns/I1.patt" id="letter-i1" title="a cardboard headset" registerevents>
+    <!--robots-->
+    <a-marker preset="custom" url="assets/markers/patterns/I1.patt" id="robot1" title="a robot" registerevents>
         <a-entity position="0 0 -1"
                   scale="1 1 1"
                   rotation="0 0 0"
-                  obj-model="obj: #i1-obj; mtl: #i1-mtl">
+                  obj-model="obj: #robot1-obj; mtl: #robot1-mtl">
             <!--<a-animation attribute="rotation" from="0 0 0" to="0 0 0" dur="5000" easing="linear" repeat="indefinite"></a-animation>-->
         </a-entity>
     </a-marker>
-    <a-marker preset="custom" url="assets/markers/patterns/A2.patt" id="letter-a2" title="a chess king" registerevents>
+    <a-marker preset="custom" url="assets/markers/patterns/A2.patt" id="robot2" title="a robot" registerevents>
         <a-entity position="0 0 0"
-                  scale="0.9 0.9 0.9"
+                  scale="1 1 1"
                   rotation="-90 0 0"
-                  obj-model="obj: #a2-obj; mtl: #a2-mtl">
-            <a-animation attribute="position" from="-3 0 0" to="3 0 0" dur="5000" direction="alternate" easing="linear" repeat="indefinite"></a-animation>
+                  obj-model="obj: #robot2-obj; mtl: #robot2-mtl">
+            <!--<a-animation attribute="position" from="-3 0 0" to="3 0 0" dur="5000" direction="alternate" easing="linear" repeat="indefinite"></a-animation>-->
         </a-entity>
     </a-marker>
-    <a-marker preset="custom" url="assets/markers/patterns/L.patt" id="letter-l" title="a soap holder" registerevents>
+    <a-marker preset="custom" url="assets/markers/patterns/L.patt" id="robot3" title="a robot" registerevents>
         <a-entity position="0 0 0"
                   scale="1 1 1"
                   rotation="0 0 10"
-                  obj-model="obj: #l-obj; mtl: #l-mtl">
-            <a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" direction="alternate" dur="1000" easing="linear" repeat="indefinite"></a-animation>
+                  obj-model="obj: #robot3-obj; mtl: #robot3-mtl">
+            <!--<a-animation attribute="scale" from="1 1 1" to="1.2 1.2 1.2" direction="alternate" dur="1000" easing="linear" repeat="indefinite"></a-animation>-->
         </a-entity>
     </a-marker>
-    <a-marker preset="custom" url="assets/markers/patterns/I2.patt" id="letter-i2" title="a pencil holder" registerevents>
+    <a-marker preset="custom" url="assets/markers/patterns/I2.patt" id="robot4" title="a robot" registerevents>
         <a-entity position="0 -4 3"
                   scale="1 1 1"
                   rotation="-90 0 0"
-                  obj-model="obj: #i2-obj; mtl: #i2-mtl">
+                  obj-model="obj: #robot4-obj; mtl: #robot4-mtl">
         </a-entity>
-        <a-animation attribute="position" from="-2 0 0" to="2 0 0" dur="5000" direction="alternate" easing="linear" repeat="indefinite"></a-animation>
+        <!--<a-animation attribute="position" from="-2 0 0" to="2 0 0" dur="5000" direction="alternate" easing="linear" repeat="indefinite"></a-animation>-->
     </a-marker>
-    <a-marker preset="custom" url="assets/markers/patterns/S.patt" id="letter-s" title="a ring" registerevents>
+    <a-marker preset="custom" url="assets/markers/patterns/S.patt" id="robot5" title="a robot" registerevents>
         <a-entity position="0 0 0"
                   scale="1 1 1"
                   rotation="45 0 0"
-                  obj-model="obj: #s-obj; mtl: #s-mtl">
-            <a-animation attribute="scale" from="1 1 1" to="1.5 1.5 1.5" direction="alternate" dur="1000" easing="linear" repeat="indefinite"></a-animation>
+                  obj-model="obj: #robot5-obj; mtl: #robot5-mtl">
+            <!--<a-animation attribute="scale" from="1 1 1" to="1.5 1.5 1.5" direction="alternate" dur="1000" easing="linear" repeat="indefinite"></a-animation>-->
         </a-entity>
     </a-marker>
-    <a-marker preset="custom" url="assets/markers/patterns/E2.patt" id="letter-e2" title="a fork" registerevents>
+    <!--characters-->
+    <a-marker preset="custom" url="assets/markers/patterns/E2.patt" id="night-king" title="Night King" registerevents>
         <a-entity position="0 0 0"
-                scale="2.5 2.5 2.5"
-                rotation="0 180 0"
-                obj-model="obj: #e2-obj; mtl: #e2-mtl">
-            <a-animation attribute="rotation" from="25 180 0" to="-25 180 0" direction="alternate" dur="2500" easing="linear" repeat="indefinite"></a-animation>
+                  scale="2.5 2.5 2.5"
+                  rotation="0 180 0"
+                  obj-model="obj: #night-king-obj; mtl: #night-king-mtl">
+            <!--<a-animation attribute="rotation" from="25 180 0" to="-25 180 0" direction="alternate" dur="2500" easing="linear" repeat="indefinite"></a-animation>-->
+        </a-entity>
+    </a-marker>
+    <a-marker preset="custom" url="assets/markers/patterns/E2.patt" id="r2d2" title="R2D2" registerevents>
+        <a-entity position="0 0 0"
+                  scale="2.5 2.5 2.5"
+                  rotation="0 180 0"
+                  obj-model="obj: #r2d2-obj; mtl: #r2d2-mtl">
+            <!--<a-animation attribute="rotation" from="25 180 0" to="-25 180 0" direction="alternate" dur="2500" easing="linear" repeat="indefinite"></a-animation>-->
+        </a-entity>
+    </a-marker>
+    <a-marker preset="custom" url="assets/markers/patterns/E2.patt" id="rick-morty" title="Rick and Morty" registerevents>
+        <a-entity position="0 0 0"
+                  scale="2.5 2.5 2.5"
+                  rotation="0 180 0"
+                  obj-model="obj: #rick-morty-obj; mtl: #rick-morty-mtl">
+            <!--<a-animation attribute="rotation" from="25 180 0" to="-25 180 0" direction="alternate" dur="2500" easing="linear" repeat="indefinite"></a-animation>-->
+        </a-entity>
+    </a-marker>
+    <a-marker preset="custom" url="assets/markers/patterns/E2.patt" id="robocop" title="Robocop" registerevents>
+        <a-entity position="0 0 0"
+                  scale="2.5 2.5 2.5"
+                  rotation="0 180 0"
+                  obj-model="obj: #robocop-obj; mtl: #robocop-mtl">
+            <!--<a-animation attribute="rotation" from="25 180 0" to="-25 180 0" direction="alternate" dur="2500" easing="linear" repeat="indefinite"></a-animation>-->
+        </a-entity>
+    </a-marker>
+    <a-marker preset="custom" url="assets/markers/patterns/E2.patt" id="sponge-bob" title="Sponge Bob" registerevents>
+        <a-entity position="0 0 0"
+                  scale="2.5 2.5 2.5"
+                  rotation="0 180 0"
+                  obj-model="obj: #sponge-bob-obj; mtl: #sponge-bob-mtl">
+            <!--<a-animation attribute="rotation" from="25 180 0" to="-25 180 0" direction="alternate" dur="2500" easing="linear" repeat="indefinite"></a-animation>-->
         </a-entity>
     </a-marker>
     <a-entity camera position="0 0 15"></a-entity>

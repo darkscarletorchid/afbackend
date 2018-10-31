@@ -31,6 +31,7 @@
     "ngh": "^0.2.12",
     "ngx-bootstrap": "^2.0.3",
     "rxjs": "^5.5.6",
+    "three": "^0.97.0",
     "webvr-polyfill": "^0.10.5",
     "zone.js": "^0.8.19"
   },
