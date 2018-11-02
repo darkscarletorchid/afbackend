@@ -22,3 +22,14 @@ AFRAME.registerComponent('loader', {
     });
   }
 });
+
+AFRAME.registerComponent('renderer-custom',
+    {
+        init: function() {
+            var renderer = this.el.renderer;
+            renderer.alpha = true;
+            renderer.antialias = true;
+            renderer.logarithmicDepthBuffer = true;
+            this.el.renderer = renderer;
+        }
+    });

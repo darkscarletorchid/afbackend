@@ -13,7 +13,7 @@
         <line x1="90" y1="60" x2="230" y2="60" style="stroke:white;stroke-width:1" />
     </g>
 </svg>
-<a-scene class="scene-index" embedded vr-mode-ui="enabled: false" arjs="debugUIEnabled: false; sourceType: webcam; trackingMethod: best; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+<a-scene  shadow="type: pcfsoft" class="scene-index" embedded vr-mode-ui="enabled: false" arjs="debugUIEnabled: false; sourceType: webcam; trackingMethod: best; detectionMode: mono_and_matrix; matrixCodeType: 3x3;" >
     <a-assets>
         <!--animals-->
         <a-asset-item id="penguin-obj" src="assets/models/Penguin.obj"></a-asset-item>
@@ -72,7 +72,7 @@
     </a-marker>
     <a-marker type='barcode' value='4' id="fox" title="a fox" registerevents>
         <a-entity position="0 0 0"
-                  scale="4 4 "
+                  scale="4 4 4"
                   rotation="0 0 0"
                   obj-model="obj: #fox-obj; mtl: #fox-mtl">
             <!--<a-animation attribute="position" from="2 0 0" to="-2 0 0" dur="5000" direction="alternate" easing="linear" repeat="indefinite"></a-animation>-->
