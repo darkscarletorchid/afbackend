@@ -3,8 +3,10 @@ CREATE TABLE [dbo].[Users](
 	[FirstName] [nvarchar](250) NOT NULL,
 	[LastName] [nvarchar](250) NOT NULL,
 	[Email] [nvarchar](250) NOT NULL,
+	[Phone] [nvarchar](250) NOT NULL,
 	[Token] [nvarchar](1024) NOT NULL,
 	[RegistrationDate][datetime] NOT NULL,
+	[RulesAccepted][bit] NOT NULL,
 	[IsActive][bit] NOT NULL
  CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
 (
@@ -16,7 +18,8 @@ GO
 CREATE TABLE [dbo].[Markers](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Key] [nvarchar](250) NOT NULL,
-	[Value] [nvarchar](250) NOT NULL
+	[Value] [nvarchar](250) NOT NULL,
+	[Coins] [int] NOT NULL
  CONSTRAINT [PK_Markers] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -24,18 +27,16 @@ CREATE TABLE [dbo].[Markers](
 ) ON [PRIMARY]
 GO
 
-insert into [dbo].[Markers] ([Key],[Value]) values
-('letter-m', 'M'),
-('letter-a1', 'A'),
-('letter-t', 'T'),
-('letter-e1', 'E'),
-('letter-r', 'R'),
-('letter-i1', 'I'),
-('letter-a2', 'A'),
-('letter-l', 'L'),
-('letter-i2', 'I'),
-('letter-s', 'S'),
-('letter-e2', 'E')
+insert into [dbo].[Markers] ([Key],[Value],[Coins]) values
+('deer', '1', 1),
+('fox', '3', 1),
+('shark', '4', 1),
+('burger', '43', 1),
+('egg', '19', 1),
+('sushi', '28', 1),
+('pikachu', '46', 1),
+('bulbasaur', '54', 1),
+('bb8', '35', 1)
 go
 
 CREATE TABLE [dbo].[UserMarkers](
@@ -64,11 +65,12 @@ GO
 ALTER TABLE [dbo].[UserMarkers] CHECK CONSTRAINT [FK_UserMarkers_Markers]
 GO
 
-ALTER TABLE [dbo].[Users] ADD  CONSTRAINT [FirstName_LastName_Email] UNIQUE NONCLUSTERED 
+ALTER TABLE [dbo].[Users] ADD  CONSTRAINT [FirstName_LastName_Email_Phone] UNIQUE NONCLUSTERED 
 (
 	[FirstName] ASC,
 	[LastName] ASC,
-	[Email] ASC
+	[Email] ASC,
+	[Phone] ASC
 )
 GO
 

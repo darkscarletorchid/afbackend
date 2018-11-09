@@ -46,6 +46,7 @@ namespace Materialise.AF.Web.Controllers
                 {
                     MarkerId = m.Marker.Key,
                     Letter = m.Marker.Value,
+                    Coins = m.Marker.Coins,
                     Timestamp = m.DateTime
                 })
             }).OrderByDescending(q => q.Markers.Count()).ThenBy(q => q.Progress);
@@ -76,6 +77,7 @@ namespace Materialise.AF.Web.Controllers
                 {
                     MarkerId = q.Marker.Key,
                     Letter = q.Marker.Value,
+                    Coins = q.Marker.Coins,
                     Timestamp = q.DateTime
                 })
             };
@@ -89,6 +91,12 @@ namespace Materialise.AF.Web.Controllers
             CheckRequired("Email", userRequest.Email);
             CheckRequired("First Name", userRequest.FirstName);
             CheckRequired("Last Name", userRequest.LastName);
+            CheckRequired("Phone", userRequest.Phone);
+
+            if (!userRequest.RulesAccepted)
+            {
+                throw new Exception("You must accept rules");
+            }
 
             var checkUser = _dataContext.Users.FirstOrDefault(q =>
                 q.IsActive && q.Email.Equals(userRequest.Email, StringComparison.InvariantCultureIgnoreCase));
@@ -102,8 +110,10 @@ namespace Materialise.AF.Web.Controllers
                 FirstName = userRequest.FirstName,
                 LastName = userRequest.LastName,
                 Email = userRequest.Email,
+                Phone = userRequest.Phone,
                 RegistrationDate = DateTime.UtcNow,
                 Token = token,
+                RulesAccepted = userRequest.RulesAccepted,
                 IsActive = true
             };
 
