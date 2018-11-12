@@ -1,6 +1,7 @@
 using System.Text;
 using Materialise.AF.Web.Middleware;
 using Materialise.AF.Web.Models;
+using Materialise.AF.Web.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -61,6 +62,10 @@ namespace Materialise.AF.Web
 
             services.AddDbContext<DataContext>(options =>
               options.UseSqlServer(Configuration.GetSection("ConnectionStrings")["DefaultConnection"]));
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IMarkerRepository, MarkerRepository>();
+            services.AddScoped<ITokenService, TokenService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

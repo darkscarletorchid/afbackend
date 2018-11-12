@@ -6,7 +6,7 @@ namespace Materialise.AF.Web.ResponseModel
     {
         public string MarkerId { get; set; }
         public string Letter { get; set; }
-        public int Coins { get; set; }
+        public string Collection { get; set; }
         public DateTime Timestamp { get; set; }
     }
 }

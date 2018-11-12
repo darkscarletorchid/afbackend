@@ -1,41 +1,34 @@
 using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Security.Claims;
-using System.Text;
 using Materialise.AF.Web.Models;
 using Materialise.AF.Web.RequestModels;
 using Materialise.AF.Web.ResponseModel;
+using Materialise.AF.Web.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Materialise.AF.Web.Controllers
 {
     [Route("api/[controller]")]
     public class UserController : Controller
     {
-        private readonly TokenSettings _tokenSettings;
-        private readonly DataContext _dataContext;
+        private readonly IUserRepository _userRepository;
+        private readonly ITokenService _tokenService;
 
-        public UserController(IOptions<TokenSettings> tokenSettings, DataContext dataContext)
+        public UserController(IUserRepository userRepository, ITokenService tokenService)
         {
-            _tokenSettings = tokenSettings.Value;
-            _dataContext = dataContext;
+            _userRepository = userRepository;
+            _tokenService = tokenService;
         }
 
         [AllowAnonymous]
         [HttpGet]
+        [ProducesResponseType(typeof(IOrderedEnumerable<MarkerResponse>), 200)]
+        [ProducesResponseType(500)]
         public IActionResult Index()
         {
-            var userMarkers = _dataContext.Users
-                .Include(q => q.UserMarkers)
-                .ThenInclude(q => q.Marker )
-                .Where(q => q.IsActive)
-                .ToList();
+            var userMarkers = _userRepository.GetUsers().ToList();
 
             var markerResponse = userMarkers.Select(q => new MarkerResponse
             {
@@ -46,7 +39,7 @@ namespace Materialise.AF.Web.Controllers
                 {
                     MarkerId = m.Marker.Key,
                     Letter = m.Marker.Value,
-                    Coins = m.Marker.Coins,
+                    Collection = m.Marker.Collection.Name,
                     Timestamp = m.DateTime
                 })
             }).OrderByDescending(q => q.Markers.Count()).ThenBy(q => q.Progress);
@@ -57,13 +50,11 @@ namespace Materialise.AF.Web.Controllers
         [Authorize]
         [HttpGet]
         [Route("{id:int}")]
+        [ProducesResponseType(typeof(MarkerResponse), 200)]
+        [ProducesResponseType(500)]
         public IActionResult Index(int id)
         {
-            var user = _dataContext.Users
-                .Where(q => q.IsActive)
-                .Include(q => q.UserMarkers)
-                .ThenInclude(q => q.Marker)
-                .FirstOrDefault(q => q.Id == id);
+            var user = _userRepository.GetUser(id);
 
             if (user == null)
                 return NotFound($"User with id '{id}' doesn't exist");
@@ -77,7 +68,7 @@ namespace Materialise.AF.Web.Controllers
                 {
                     MarkerId = q.Marker.Key,
                     Letter = q.Marker.Value,
-                    Coins = q.Marker.Coins,
+                    Collection = q.Marker.Collection.Name,
                     Timestamp = q.DateTime
                 })
             };
@@ -86,6 +77,8 @@ namespace Materialise.AF.Web.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(UserResponse), 200)]
+        [ProducesResponseType(500)]
         public IActionResult Index([FromBody] UserRequest userRequest)
         {
             CheckRequired("Email", userRequest.Email);
@@ -98,12 +91,10 @@ namespace Materialise.AF.Web.Controllers
                 throw new Exception("You must accept rules");
             }
 
-            var checkUser = _dataContext.Users.FirstOrDefault(q =>
-                q.IsActive && q.Email.Equals(userRequest.Email, StringComparison.InvariantCultureIgnoreCase));
-            if (checkUser != null)
+            if (_userRepository.CheckUserExists(userRequest.Email))
                 throw new Exception($"'{userRequest.Email}' already exists");
 
-            var token = GenerateToken(userRequest.Email);
+            var token = _tokenService.GenerateToken(userRequest.Email);
 
             var user = new User
             {
@@ -117,30 +108,13 @@ namespace Materialise.AF.Web.Controllers
                 IsActive = true
             };
 
-            _dataContext.Users.Add(user);
-            _dataContext.SaveChanges();
+            _userRepository.Create(user);
 
-            return Ok(new {user.Id, user.Token});
-        }
-
-        private string GenerateToken(string userName)
-        {
-            var claims = new[]
+            return Ok(new UserResponse
             {
-                new Claim(JwtRegisteredClaimNames.Sub, userName),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-            };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenSettings.Key));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(_tokenSettings.Issuer,
-                _tokenSettings.Audience,
-                claims,
-                expires: DateTime.Now.AddDays(2),
-                signingCredentials: creds);
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
+                Id = user.Id,
+                Token = user.Token
+            });
         }
 
         private static void CheckRequired(string field, string fieldValue)

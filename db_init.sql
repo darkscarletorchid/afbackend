@@ -15,11 +15,26 @@ CREATE TABLE [dbo].[Users](
 ) ON [PRIMARY]
 GO
 
+CREATE TABLE [dbo].[MarkerCollection](
+	[Id] [int] NOT NULL,
+	[Name] [nvarchar](250) NOT NULL
+ CONSTRAINT [PK_MarkerCollection] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+insert into [dbo].[MarkerCollection]([Id],[Name]) values
+(1, 'food'),
+(2, 'animal'),
+(3, 'heroes')
+
 CREATE TABLE [dbo].[Markers](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Key] [nvarchar](250) NOT NULL,
 	[Value] [nvarchar](250) NOT NULL,
-	[Coins] [int] NOT NULL
+	[CollectionId] [int] NOT NULL
  CONSTRAINT [PK_Markers] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -27,16 +42,23 @@ CREATE TABLE [dbo].[Markers](
 ) ON [PRIMARY]
 GO
 
-insert into [dbo].[Markers] ([Key],[Value],[Coins]) values
+ALTER TABLE [dbo].[Markers]  WITH CHECK ADD  CONSTRAINT [FK_Markers_MarkerCollection] FOREIGN KEY([CollectionId])
+REFERENCES [dbo].[MarkerCollection] ([Id])
+GO
+
+ALTER TABLE [dbo].[Markers] CHECK CONSTRAINT [FK_Markers_MarkerCollection]
+GO
+
+insert into [dbo].[Markers] ([Key],[Value],[CollectionId]) values
 ('deer', '1', 1),
 ('fox', '3', 1),
 ('shark', '4', 1),
-('burger', '43', 1),
-('egg', '19', 1),
-('sushi', '28', 1),
-('pikachu', '46', 1),
-('bulbasaur', '54', 1),
-('bb8', '35', 1)
+('burger', '43', 2),
+('egg', '19', 2),
+('sushi', '28', 2),
+('pikachu', '46', 3),
+('bulbasaur', '54', 3),
+('bb8', '35', 3)
 go
 
 CREATE TABLE [dbo].[UserMarkers](
