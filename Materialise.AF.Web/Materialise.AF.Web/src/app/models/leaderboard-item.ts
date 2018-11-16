@@ -16,6 +16,7 @@ export class LeaderboardItem {
     userName: string;
     progress: string;
     itemsFound: number;
+    coins: number;
 }
 
 class UserMarker {

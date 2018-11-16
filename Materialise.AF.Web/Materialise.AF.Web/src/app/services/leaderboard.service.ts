@@ -11,28 +11,30 @@ export class LeaderboardService {
 
     constructor(private http: HttpClient, private authService: AuthService) { }
 
-    private apiPath: string = `${environment.apiEndpoint}/user`;
+    private apiPath = `${environment.apiEndpoint}/user`;
 
     getTopUser(): Observable<LeaderboardItem[]> {
         const httpOptions = this.authService.getAuthorizationHeaders();
         return this.http.get<any>(this.apiPath, httpOptions).map(data => {
-            var leaders =
+            const leaders =
                 data.map((user, i) => {
                     return {
                         no: i + 1,
                         userName: user.userName,
                         progress: this.formatProgress(user.progress),
-                        itemsFound: user.markers.length
-                    }
+                        itemsFound: user.markers.length,
+                        coins: user.coins
+                    };
                 });
             return leaders;
         });
-    };
+    }
 
     private formatProgress(progress: string): string {
         const index = progress.lastIndexOf('.');
-        if (index === -1)
+        if (index === -1) {
             return progress;
+        }
 
         return progress.slice(0, index);
     }

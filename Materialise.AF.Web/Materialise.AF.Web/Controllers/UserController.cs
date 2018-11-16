@@ -35,6 +35,7 @@ namespace Materialise.AF.Web.Controllers
                 UserId = q.Id,
                 UserName = $"{q.FirstName} {q.LastName}",
                 Progress = CalculateProgress(q.RegistrationDate, q.UserMarkers.Select(mk => mk.DateTime).ToList()),
+                Coins = CalculateCoins(q.UserMarkers.ToList()),
                 Markers = q.UserMarkers.Select(m => new MarkerModel
                 {
                     MarkerId = m.Marker.Key,
@@ -64,6 +65,7 @@ namespace Materialise.AF.Web.Controllers
                 UserId = user.Id,
                 UserName = $"{user.FirstName} {user.LastName}",
                 Progress = CalculateProgress(user.RegistrationDate, user.UserMarkers.Select(q => q.DateTime).ToList()),
+                Coins = CalculateCoins(user.UserMarkers.ToList()),
                 Markers = user.UserMarkers.Select(q => new MarkerModel
                 {
                     MarkerId = q.Marker.Key,
@@ -132,6 +134,17 @@ namespace Materialise.AF.Web.Controllers
 
             var res = lastDate - registrationDate;
             return res;
+        }
+
+        private static int CalculateCoins(List<UserMarker> userMarkers)
+        {
+            var groups = userMarkers.GroupBy(q => q.Marker.CollectionId).ToDictionary(q => q.Key, q => q.Count());
+            var coins = groups.Count(q => q.Value == 3);
+
+            if (coins == 3)
+                coins += 1;
+
+            return coins;
         }
     }
 }
