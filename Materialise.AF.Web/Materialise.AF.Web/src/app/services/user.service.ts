@@ -22,7 +22,9 @@ export class UserService {
     }
 
     create(user: User) {
-        const userData = { firstname: user.firstName, lastName: user.lastName, email: user.email };
+        const userData = {
+            firstname: user.firstName, lastName: user.lastName, email: user.email, phone: user.phone, rulesAccepted: user.rulesAccepted
+        };
         const httpOptions = this.authService.getAuthorizationHeaders();
         return this.http.post<any>(this.apiPath, userData, httpOptions)
             .map(data => {

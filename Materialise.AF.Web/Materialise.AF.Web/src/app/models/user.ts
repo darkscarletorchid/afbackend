@@ -3,6 +3,8 @@ export class User {
     firstName: string = '';
     lastName: string = '';
     email: string = '';
+    phone: string = '';
+    rulesAccepted: boolean = false;
 
     public constructor(init?: Partial<User>) {
         Object.assign(this, init);

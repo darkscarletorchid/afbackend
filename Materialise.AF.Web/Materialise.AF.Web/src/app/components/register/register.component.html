@@ -16,6 +16,15 @@
                    name="email">
         </mat-form-field>
 
+        <mat-form-field>
+            <input matInput placeholder="Phone" type="text" required [(ngModel)]="model.phone" name="phone">
+        </mat-form-field>
+
+        <mat-form-field>
+            Accept Terms of Use
+            <input matInput placeholder="Accept Rules" type="checkbox" required [(ngModel)]="model.rulesAccepted" name="rulesAccepted">
+        </mat-form-field>
+
         <button type="submit" mat-button [disabled]="!registerForm.form.valid || loading">Start quest 🚀</button>
     </form>
 </section>

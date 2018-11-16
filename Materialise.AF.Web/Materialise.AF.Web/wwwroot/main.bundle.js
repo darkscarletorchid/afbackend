@@ -27,7 +27,7 @@ module.exports = ""
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\n"
+module.exports = "<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -253,7 +253,7 @@ var AppModule = /** @class */ (function () {
 /***/ "./src/app/components/camera-ar/camera-ar.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".result-circle {\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 10;\n}\n\n.spinner {\n    /*margin: 50% auto 0;*/\n    width: 200px;\n    text-align: center;\n    position: fixed;\n    top: 50%;\n    left: calc(50% - 100px);\n}\n\n.spinner > div {\n        width: 18px;\n        height: 18px;\n        background-color: #FFF;\n        border-radius: 100%;\n        display: inline-block;\n        -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n        animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n    }\n\n.spinner .bounce1 {\n        -webkit-animation-delay: -0.32s;\n        animation-delay: -0.32s;\n    }\n\n.spinner .bounce2 {\n        -webkit-animation-delay: -0.16s;\n        animation-delay: -0.16s;\n    }\n\n@-webkit-keyframes sk-bouncedelay {\n    0%, 80%, 100% {\n        -webkit-transform: scale(0)\n    }\n\n    40% {\n        -webkit-transform: scale(1.0)\n    }\n}\n\n@keyframes sk-bouncedelay {\n    0%, 80%, 100% {\n        -webkit-transform: scale(0);\n        transform: scale(0);\n    }\n\n    40% {\n        -webkit-transform: scale(1.0);\n        transform: scale(1.0);\n    }\n}\n"
+module.exports = ".result-circle {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 10;\r\n}\r\n\r\n.spinner {\r\n    /*margin: 50% auto 0;*/\r\n    width: 200px;\r\n    text-align: center;\r\n    position: fixed;\r\n    top: 50%;\r\n    left: calc(50% - 100px);\r\n}\r\n\r\n.spinner > div {\r\n        width: 18px;\r\n        height: 18px;\r\n        background-color: #FFF;\r\n        border-radius: 100%;\r\n        display: inline-block;\r\n        -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\r\n        animation: sk-bouncedelay 1.4s infinite ease-in-out both;\r\n    }\r\n\r\n.spinner .bounce1 {\r\n        -webkit-animation-delay: -0.32s;\r\n        animation-delay: -0.32s;\r\n    }\r\n\r\n.spinner .bounce2 {\r\n        -webkit-animation-delay: -0.16s;\r\n        animation-delay: -0.16s;\r\n    }\r\n\r\n@-webkit-keyframes sk-bouncedelay {\r\n    0%, 80%, 100% {\r\n        -webkit-transform: scale(0)\r\n    }\r\n\r\n    40% {\r\n        -webkit-transform: scale(1.0)\r\n    }\r\n}\r\n\r\n@keyframes sk-bouncedelay {\r\n    0%, 80%, 100% {\r\n        -webkit-transform: scale(0);\r\n        transform: scale(0);\r\n    }\r\n\r\n    40% {\r\n        -webkit-transform: scale(1.0);\r\n        transform: scale(1.0);\r\n    }\r\n}\r\n"
 
 /***/ }),
 
@@ -362,14 +362,14 @@ var CameraArComponent = /** @class */ (function () {
 /***/ "./src/app/components/header/header.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".float-left {\n\n}\n\n.float-right {\n\n}\n"
+module.exports = ".float-left {\r\n\r\n}\r\n\r\n.float-right {\r\n\r\n}\r\n"
 
 /***/ }),
 
 /***/ "./src/app/components/header/header.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar color=\"primary\">\n    <span class=\"float-left\">Materialise 3D-printing AR Quest</span>\n</mat-toolbar>\n"
+module.exports = "<mat-toolbar color=\"primary\">\r\n    <span class=\"float-left\">Materialise 3D-printing AR Quest</span>\r\n</mat-toolbar>\r\n"
 
 /***/ }),
 
@@ -406,14 +406,14 @@ var HeaderComponent = /** @class */ (function () {
 /***/ "./src/app/components/leaderboard/leaderboard.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "/* .example-container {\n  display: flex;\n  flex-direction: column;\n  min-width: 300px;\n}\n\n.mat-table {\n  overflow: auto;\n  max-height: 500px;\n}\n\n.mat-header-cell.mat-sort-header-sorted {\n  color: black;\n} */\n.example-container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  height: 100%;\n  max-width: 100%;\n  margin: 2% 5%;\n}\n.mat-table {\n  overflow: auto;\n  max-height: 100%;\n}\n.txt-cenetr {\n  text-align: center;\n}"
+module.exports = "/* .example-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  min-width: 300px;\r\n}\r\n\r\n.mat-table {\r\n  overflow: auto;\r\n  max-height: 500px;\r\n}\r\n\r\n.mat-header-cell.mat-sort-header-sorted {\r\n  color: black;\r\n} */\r\n.example-container {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n      -ms-flex-direction: column;\r\n          flex-direction: column;\r\n  height: 100%;\r\n  max-width: 100%;\r\n  margin: 2% 5%;\r\n}\r\n.mat-table {\r\n  overflow: auto;\r\n  max-height: 100%;\r\n}\r\n.txt-cenetr {\r\n  text-align: center;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/components/leaderboard/leaderboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n\n<div class=\"example-container\">\n  <h1 class=\"txt-cenetr\">Leaderboard</h1>\n  <h3>Last updated: {{lastUpdated | date:'short'}}</h3>\n\n  <mat-table #table [dataSource]=\"leaders\" class=\"mat-elevation-z8\">\n    <!-- Name Column -->\n    <ng-container matColumnDef=\"no\">\n      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>\n      <mat-cell *matCellDef=\"let element\"> {{element.no}} </mat-cell>\n    </ng-container>\n\n    <!-- Name Column -->\n    <ng-container matColumnDef=\"userName\">\n      <mat-header-cell *matHeaderCellDef> User </mat-header-cell>\n      <mat-cell *matCellDef=\"let element\"> {{element.userName}} </mat-cell>\n    </ng-container>\n\n    <!-- Found Items Column -->\n    <ng-container matColumnDef=\"itemsFound\">\n      <mat-header-cell *matHeaderCellDef> Items found </mat-header-cell>\n      <mat-cell *matCellDef=\"let element\"> {{element.itemsFound}} </mat-cell>\n    </ng-container>\n\n    <!-- Found Items Column -->\n    <ng-container matColumnDef=\"progress\">\n      <mat-header-cell *matHeaderCellDef> Progress </mat-header-cell>\n      <mat-cell *matCellDef=\"let element\"> {{element.progress}} </mat-cell>\n    </ng-container>\n\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n  </mat-table>\n</div>"
+module.exports = "<app-header></app-header>\r\n\r\n<div class=\"example-container\">\r\n  <h1 class=\"txt-cenetr\">Leaderboard</h1>\r\n  <h3>Last updated: {{lastUpdated | date:'short'}}</h3>\r\n\r\n  <mat-table #table [dataSource]=\"leaders\" class=\"mat-elevation-z8\">\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"no\">\r\n      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>\r\n      <mat-cell *matCellDef=\"let element\"> {{element.no}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"userName\">\r\n      <mat-header-cell *matHeaderCellDef> User </mat-header-cell>\r\n      <mat-cell *matCellDef=\"let element\"> {{element.userName}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <!-- Found Items Column -->\r\n    <ng-container matColumnDef=\"itemsFound\">\r\n      <mat-header-cell *matHeaderCellDef> Items found </mat-header-cell>\r\n      <mat-cell *matCellDef=\"let element\"> {{element.itemsFound}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <!-- Found Items Column -->\r\n    <ng-container matColumnDef=\"progress\">\r\n      <mat-header-cell *matHeaderCellDef> Progress </mat-header-cell>\r\n      <mat-cell *matCellDef=\"let element\"> {{element.progress}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\r\n  </mat-table>\r\n</div>"
 
 /***/ }),
 
@@ -477,14 +477,14 @@ var LeaderboardComponent = /** @class */ (function () {
 /***/ "./src/app/components/register/register.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".register-form {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    text-align: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n}\n\n    .register-form > * {\n        margin: 2% 10% 0% 10%;\n    }\n\n    .form-container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    height: 80vh;\n}\n"
+module.exports = ".register-form {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n        -ms-flex-direction: column;\r\n            flex-direction: column;\r\n    text-align: center;\r\n    -webkit-box-pack: center;\r\n        -ms-flex-pack: center;\r\n            justify-content: center;\r\n}\r\n\r\n    .register-form > * {\r\n        margin: 2% 10% 0% 10%;\r\n    }\r\n\r\n    .form-container {\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-orient: vertical;\r\n    -webkit-box-direction: normal;\r\n        -ms-flex-direction: column;\r\n            flex-direction: column;\r\n    -webkit-box-pack: center;\r\n        -ms-flex-pack: center;\r\n            justify-content: center;\r\n    height: 80vh;\r\n}\r\n"
 
 /***/ }),
 
 /***/ "./src/app/components/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<section class=\"form-container\">\n    <form class=\"register-form\" (ngSubmit)=\"onSubmit()\" #registerForm=\"ngForm\">\n        <h1>Quest Registration</h1>\n\n        <mat-form-field>\n            <input matInput placeholder=\"First name\" type=\"text\" required [(ngModel)]=\"model.firstName\" name=\"firstName\">\n        </mat-form-field>\n\n        <mat-form-field>\n            <input matInput placeholder=\"Last Name\" type=\"text\" required [(ngModel)]=\"model.lastName\" name=\"lastName\">\n        </mat-form-field>\n\n        <mat-form-field>\n            <input matInput placeholder=\"E-mail\" type=\"text\" required pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\" [(ngModel)]=\"model.email\"\n                   name=\"email\">\n        </mat-form-field>\n\n        <button type=\"submit\" mat-button [disabled]=\"!registerForm.form.valid || loading\">Start quest 🚀</button>\n    </form>\n</section>\n"
+module.exports = "<app-header></app-header>\r\n<section class=\"form-container\">\r\n    <form class=\"register-form\" (ngSubmit)=\"onSubmit()\" #registerForm=\"ngForm\">\r\n        <h1>Quest Registration</h1>\r\n\r\n        <mat-form-field>\r\n            <input matInput placeholder=\"First name\" type=\"text\" required [(ngModel)]=\"model.firstName\" name=\"firstName\">\r\n        </mat-form-field>\r\n\r\n        <mat-form-field>\r\n            <input matInput placeholder=\"Last Name\" type=\"text\" required [(ngModel)]=\"model.lastName\" name=\"lastName\">\r\n        </mat-form-field>\r\n\r\n        <mat-form-field>\r\n            <input matInput placeholder=\"E-mail\" type=\"text\" required pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\" [(ngModel)]=\"model.email\"\r\n                   name=\"email\">\r\n        </mat-form-field>\r\n\r\n        <mat-form-field>\r\n            <input matInput placeholder=\"Phone\" type=\"text\" required [(ngModel)]=\"model.phone\" name=\"phone\">\r\n        </mat-form-field>\r\n\r\n        <mat-form-field>\r\n            Accept Terms of Use\r\n            <input matInput placeholder=\"Accept Rules\" type=\"checkbox\" required [(ngModel)]=\"model.rulesAccepted\" name=\"rulesAccepted\">\r\n        </mat-form-field>\r\n\r\n        <button type=\"submit\" mat-button [disabled]=\"!registerForm.form.valid || loading\">Start quest 🚀</button>\r\n    </form>\r\n</section>\r\n"
 
 /***/ }),
 
@@ -513,7 +513,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var RegisterComponent = /** @class */ (function () {
-    //snackBar: MatSnackBar = {};
     function RegisterComponent(userService, router, snackBar) {
         this.userService = userService;
         this.router = router;
@@ -588,6 +587,8 @@ var User = /** @class */ (function () {
         this.firstName = '';
         this.lastName = '';
         this.email = '';
+        this.phone = '';
+        this.rulesAccepted = false;
         Object.assign(this, init);
     }
     return User;
@@ -843,7 +844,9 @@ var UserService = /** @class */ (function () {
         return JSON.parse(localStorage.getItem('currentUser'));
     };
     UserService.prototype.create = function (user) {
-        var userData = { firstname: user.firstName, lastName: user.lastName, email: user.email };
+        var userData = {
+            firstname: user.firstName, lastName: user.lastName, email: user.email, phone: user.phone, rulesAccepted: user.rulesAccepted
+        };
         var httpOptions = this.authService.getAuthorizationHeaders();
         return this.http.post(this.apiPath, userData, httpOptions)
             .map(function (data) {

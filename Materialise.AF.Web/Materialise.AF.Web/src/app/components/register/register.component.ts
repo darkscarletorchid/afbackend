@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
-import { UserService } from '../../services/user.service'
+import { UserService } from '../../services/user.service';
 
-import { User } from '../../models/user'
+import { User } from '../../models/user';
 
 @Component({
     selector: 'app-register',
@@ -13,8 +13,7 @@ import { User } from '../../models/user'
 })
 export class RegisterComponent implements OnInit {
     model: User = new User();
-    loading: boolean = false;
-    //snackBar: MatSnackBar = {};
+    loading = false;
 
     constructor(private userService: UserService,
         private router: Router,

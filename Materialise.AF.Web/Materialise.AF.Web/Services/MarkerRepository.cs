@@ -18,7 +18,6 @@ namespace Materialise.AF.Web.Services
         {
             var markers = _dataContext.Markers
                 .Include(q => q.Collection);
-                //.Include(q => q.UserMarkers);
 
             return markers;
         }

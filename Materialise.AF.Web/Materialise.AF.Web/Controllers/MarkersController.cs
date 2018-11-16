@@ -5,6 +5,7 @@ using System.Security;
 using System.Security.Claims;
 using Materialise.AF.Web.Models;
 using Materialise.AF.Web.RequestModels;
+using Materialise.AF.Web.ResponseModel;
 using Materialise.AF.Web.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
