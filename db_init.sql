@@ -26,8 +26,8 @@ CREATE TABLE [dbo].[MarkerCollection](
 GO
 
 insert into [dbo].[MarkerCollection]([Id],[Name]) values
-(1, 'food'),
-(2, 'animal'),
+(1, 'animal'),
+(2, 'food'),
 (3, 'heroes')
 
 CREATE TABLE [dbo].[Markers](
