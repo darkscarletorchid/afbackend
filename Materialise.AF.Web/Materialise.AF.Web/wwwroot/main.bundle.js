@@ -413,7 +413,7 @@ module.exports = "/* .example-container {\r\n  display: flex;\r\n  flex-directio
 /***/ "./src/app/components/leaderboard/leaderboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\r\n\r\n<div class=\"example-container\">\r\n  <h1 class=\"txt-cenetr\">Leaderboard</h1>\r\n  <h3>Last updated: {{lastUpdated | date:'short'}}</h3>\r\n\r\n  <mat-table #table [dataSource]=\"leaders\" class=\"mat-elevation-z8\">\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"no\">\r\n      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>\r\n      <mat-cell *matCellDef=\"let element\"> {{element.no}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"userName\">\r\n      <mat-header-cell *matHeaderCellDef> User </mat-header-cell>\r\n      <mat-cell *matCellDef=\"let element\"> {{element.userName}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <!-- Found Items Column -->\r\n    <ng-container matColumnDef=\"itemsFound\">\r\n      <mat-header-cell *matHeaderCellDef> Items found </mat-header-cell>\r\n      <mat-cell *matCellDef=\"let element\"> {{element.itemsFound}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <!-- Found Items Column -->\r\n    <ng-container matColumnDef=\"progress\">\r\n      <mat-header-cell *matHeaderCellDef> Progress </mat-header-cell>\r\n      <mat-cell *matCellDef=\"let element\"> {{element.progress}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"coins\">\r\n        <mat-header-cell *matHeaderCellDef> Coins </mat-header-cell>\r\n        <mat-cell *matCellDef=\"let element\"> {{element.coins}} </mat-cell>\r\n      </ng-container>\r\n\r\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\r\n  </mat-table>\r\n</div>"
+module.exports = "<app-header></app-header>\r\n\r\n<div class=\"example-container\">\r\n  <h1 class=\"txt-cenetr\">Leaderboard</h1>\r\n  <h3>Last updated: {{lastUpdated | date:'short'}}</h3>\r\n\r\n  <mat-table #table [dataSource]=\"leaders\" class=\"mat-elevation-z8\">\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"no\">\r\n      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>\r\n      <mat-cell *matCellDef=\"let element\"> {{element.no}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <!-- Name Column -->\r\n    <ng-container matColumnDef=\"userName\">\r\n      <mat-header-cell *matHeaderCellDef> User </mat-header-cell>\r\n      <mat-cell *matCellDef=\"let element\"> {{element.userName}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <!-- Found Items Column -->\r\n    <ng-container matColumnDef=\"phone\">\r\n        <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>\r\n        <mat-cell *matCellDef=\"let element\"> {{element.phone}} </mat-cell>\r\n      </ng-container>\r\n\r\n    <!-- Found Items Column -->\r\n    <ng-container matColumnDef=\"itemsFound\">\r\n      <mat-header-cell *matHeaderCellDef> Items found </mat-header-cell>\r\n      <mat-cell *matCellDef=\"let element\"> {{element.itemsFound}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <!-- Found Items Column -->\r\n    <ng-container matColumnDef=\"progress\">\r\n      <mat-header-cell *matHeaderCellDef> Progress </mat-header-cell>\r\n      <mat-cell *matCellDef=\"let element\"> {{element.progress}} </mat-cell>\r\n    </ng-container>\r\n\r\n    <ng-container matColumnDef=\"coins\">\r\n        <mat-header-cell *matHeaderCellDef> Coins </mat-header-cell>\r\n        <mat-cell *matCellDef=\"let element\"> {{element.coins}} </mat-cell>\r\n      </ng-container>\r\n\r\n    <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n    <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\r\n  </mat-table>\r\n</div>"
 
 /***/ }),
 
@@ -442,7 +442,7 @@ var LeaderboardComponent = /** @class */ (function () {
         this.leaderboardService = leaderboardService;
         this.leaders = [];
         this.interval = 60000 * 5; //5 min
-        this.displayedColumns = ['no', 'userName', 'itemsFound', 'progress', 'coins'];
+        this.displayedColumns = ['no', 'userName', 'phone', 'itemsFound', 'progress', 'coins'];
     }
     LeaderboardComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -732,6 +732,7 @@ var LeaderboardService = /** @class */ (function () {
                 return {
                     no: i + 1,
                     userName: user.userName,
+                    phone: user.phone,
                     progress: _this.formatProgress(user.progress),
                     itemsFound: user.markers.length,
                     coins: user.coins

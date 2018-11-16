@@ -14,7 +14,7 @@ import { LeaderboardService } from '../../services/leaderboard.service'
 export class LeaderboardComponent implements OnInit {
     leaders: LeaderboardItem[] = [];
     interval = 60000 * 5; //5 min
-    displayedColumns = ['no', 'userName', 'itemsFound', 'progress', 'coins'];
+    displayedColumns = ['no', 'userName', 'phone', 'itemsFound', 'progress', 'coins'];
     lastUpdated: Date;
 
     constructor(private leaderboardService: LeaderboardService) {

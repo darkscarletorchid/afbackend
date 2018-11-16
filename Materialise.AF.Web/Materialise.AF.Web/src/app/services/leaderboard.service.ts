@@ -21,6 +21,7 @@ export class LeaderboardService {
                     return {
                         no: i + 1,
                         userName: user.userName,
+                        phone: user.phone,
                         progress: this.formatProgress(user.progress),
                         itemsFound: user.markers.length,
                         coins: user.coins

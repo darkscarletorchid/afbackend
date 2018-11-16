@@ -34,6 +34,7 @@ namespace Materialise.AF.Web.Controllers
             {
                 UserId = q.Id,
                 UserName = $"{q.FirstName} {q.LastName}",
+                Phone = q.Phone,
                 Progress = CalculateProgress(q.RegistrationDate, q.UserMarkers.Select(mk => mk.DateTime).ToList()),
                 Coins = CalculateCoins(q.UserMarkers.ToList()),
                 Markers = q.UserMarkers.Select(m => new MarkerModel
@@ -64,6 +65,7 @@ namespace Materialise.AF.Web.Controllers
             {
                 UserId = user.Id,
                 UserName = $"{user.FirstName} {user.LastName}",
+                Phone = user.Phone,
                 Progress = CalculateProgress(user.RegistrationDate, user.UserMarkers.Select(q => q.DateTime).ToList()),
                 Coins = CalculateCoins(user.UserMarkers.ToList()),
                 Markers = user.UserMarkers.Select(q => new MarkerModel

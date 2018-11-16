@@ -14,6 +14,7 @@
 export class LeaderboardItem {
     no: number;
     userName: string;
+    phone: string;
     progress: string;
     itemsFound: number;
     coins: number;

@@ -18,6 +18,12 @@
     </ng-container>
 
     <!-- Found Items Column -->
+    <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
+      </ng-container>
+
+    <!-- Found Items Column -->
     <ng-container matColumnDef="itemsFound">
       <mat-header-cell *matHeaderCellDef> Items found </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.itemsFound}} </mat-cell>
