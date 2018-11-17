@@ -309,7 +309,7 @@ var CameraArComponent = /** @class */ (function () {
             .subscribe(function (data) {
             _this.itemsFound = data.markers;
             _this.actualCount = data.markers.length.toString();
-            if (data.markers.length < 10) {
+            if (data.markers.length < 10 && +_this.allCount >= 10) {
                 _this.actualCount = '0' + _this.actualCount;
             }
         }, function () { });

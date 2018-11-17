@@ -59,7 +59,7 @@ export class CameraArComponent implements OnInit {
             .subscribe(data => {
                 this.itemsFound = data.markers;
                 this.actualCount = data.markers.length.toString();
-                if (data.markers.length < 10) {
+                if (data.markers.length < 10 && +this.allCount >= 10) {
                     this.actualCount = '0' + this.actualCount;
                 }
             }, () => { });
