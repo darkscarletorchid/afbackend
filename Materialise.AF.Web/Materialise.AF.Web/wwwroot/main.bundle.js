@@ -288,7 +288,7 @@ var CameraArComponent = /** @class */ (function () {
             _this.itemsFound = data.markers;
             var prevCount = _this.actualCount;
             _this.actualCount = data.markers.length.toString();
-            if (data.markers.length < 10) {
+            if (data.markers.length < 10 && +_this.allCount >= 10) {
                 _this.actualCount = '0' + _this.actualCount;
             }
             _this.progress = data.progress;
