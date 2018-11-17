@@ -1,17 +1,29 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+}
+
+mat-accordion {
+    height: 100% !important;
+}
 .register-form {
     display: flex;
     flex-direction: column;
     text-align: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
-    .register-form > * {
-        margin: 2% 10% 0% 10%;
-    }
+.text {
+    font-size: 14px;
+}
 
-.form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 80vh;
+.welcome-wrapper {
+    padding-top: 2em;
+}
+
+.rules-wrapper {
+    text-align: left;
+    line-height: 16px;
 }

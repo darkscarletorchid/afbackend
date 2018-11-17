@@ -13,13 +13,14 @@ import { User } from '../../models/user';
 })
 export class RegisterComponent implements OnInit {
     model: User = new User();
+    isStart: boolean;
     loading = false;
-
     constructor(private userService: UserService,
         private router: Router,
         public snackBar: MatSnackBar) { }
 
     ngOnInit() {
+        this.isStart = true;
     }
 
     onSubmit() {

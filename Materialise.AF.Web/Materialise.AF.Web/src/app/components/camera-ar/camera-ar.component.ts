@@ -14,7 +14,8 @@ export class CameraArComponent implements OnInit {
 
     user: User;
     itemsFound: string[];
-    actualCount: string = '00';
+    actualCount: string = '0';
+    allCount: string;
     progress: string;
     userItem: UserItem = new UserItem();
     loading: boolean = false;
@@ -25,6 +26,7 @@ export class CameraArComponent implements OnInit {
     ngOnInit() {
         this.user = this.userService.getCurrentUser();
         this.getProgressByUser(this.user.id);
+        this.allCount  = '9';
     }
     @HostListener('markerFound', ['$event.target'])
     onMarkerFound(target) {
@@ -44,7 +46,7 @@ export class CameraArComponent implements OnInit {
                     if (this.actualCount !== prevCount) {
                         var output = 'You found ' + this.title + '!';
                         this.snackBar.open(output, '', { duration: 3000, panelClass: 'custom-snackbar' });
-                        if (this.actualCount === '11') {
+                        if (this.actualCount === this.allCount) {
                             setTimeout(() => {
                                 this.snackBar.open("You found all models! Well done!", '', { duration: 3000, panelClass: 'custom-snackbar' });
                             }, 3000);
